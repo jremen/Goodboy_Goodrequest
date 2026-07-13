@@ -1,3 +1,4 @@
+/* Defines reset and box-sizing: border-box */
 @import '@mantine/core/styles.css';
 @import '@mantine/notifications/styles.css';
 
@@ -17,27 +18,8 @@ body {
 
 main {
   flex: 1;
-}
-
-.donation-type-card:focus-visible {
-  outline: 2px solid var(--mantine-color-brand-6);
-  outline-offset: 2px;
-}
-
-/* Skip to content */
-.skip-link {
-  position: absolute;
-  top: -40px;
-  left: 0;
-  background: var(--mantine-color-brand-6);
-  color: white;
-  padding: 8px 16px;
-  z-index: 10000;
-  transition: top 0.2s;
-}
-
-.skip-link:focus {
-  top: 0;
+  max-width: 1440px;
+  margin: 0 auto;
 }
 
 @media (prefers-reduced-motion: reduce) {
