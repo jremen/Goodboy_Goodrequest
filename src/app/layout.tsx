@@ -1,7 +1,14 @@
 import { ColorSchemeScript } from "@mantine/core";
 import type { Metadata, Viewport } from "next";
+import { Inter } from "next/font/google";
 import "./globals.css";
 import { Providers } from "./providers";
+
+const inter = Inter({
+  subsets: ["latin", "latin-ext"],
+  variable: "--font-inter",
+  display: "swap",
+});
 
 export const metadata: Metadata = {
   title: "GoodBoy - Pomôžte psíkom v núdzi",
@@ -40,7 +47,7 @@ export default function RootLayout({
         <link rel="manifest" href="/site.webmanifest" />
         <meta name="theme-color" content="#4F46E5" />
       </head>
-      <body>
+      <body className={inter.variable}>
         <Providers>
           <main id="main-content" className="">
             {children}

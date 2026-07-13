@@ -1,5 +1,11 @@
 "use client";
 
+import { Footer } from "../layout/Footer/Footer";
+
 export function DonationWizard() {
-  return <>Blabla</>;
+  return (
+    <div>
+      <Footer />
+    </div>
+  );
 }
