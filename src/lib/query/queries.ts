@@ -1,8 +1,8 @@
-'use client';
+"use client";
 
-import { getShelters, getStats } from '@/lib/api/endpoints';
-import { useQuery } from '@tanstack/react-query';
-import { queryKeys } from './queryKeys';
+import { getShelters, getStats } from "@/lib/api/endpoints";
+import { useQuery } from "@tanstack/react-query";
+import { queryKeys } from "./queryKeys";
 
 export function useShelters() {
   return useQuery({

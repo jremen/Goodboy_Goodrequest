@@ -1,34 +1,38 @@
-import { Footer } from '@/components/layout/Footer/Footer';
-import { Header } from '@/components/layout/Header/Header';
-import { ColorSchemeScript } from '@mantine/core';
-import type { Metadata, Viewport } from 'next';
-import './globals.css';
-import { Providers } from './providers';
+import { ColorSchemeScript } from "@mantine/core";
+import type { Metadata, Viewport } from "next";
+import "./globals.css";
+import { Providers } from "./providers";
 
 export const metadata: Metadata = {
-  title: 'GoodBoy - Pomôžte psíkom v núdzi',
-  description: 'Podporte slovenské psie útulky prostredníctvom nadácie GoodBoy.',
+  title: "GoodBoy - Pomôžte psíkom v núdzi",
+  description:
+    "Podporte slovenské psie útulky prostredníctvom nadácie GoodBoy.",
   openGraph: {
-    title: 'GoodBoy - Pomôžte psíkom v núdzi',
-    description: 'Podporte slovenské psie útulky prostredníctvom nadácie GoodBoy.',
-    type: 'website',
+    title: "GoodBoy - Pomôžte psíkom v núdzi",
+    description:
+      "Podporte slovenské psie útulky prostredníctvom nadácie GoodBoy.",
+    type: "website",
   },
   icons: {
     icon: [
-      { url: '/favicon.svg', type: 'image/svg+xml' },
-      { url: '/favicon-32.png', type: 'image/png', sizes: '32x32' },
-      { url: '/favicon-16.png', type: 'image/png', sizes: '16x16' },
+      { url: "/favicon.svg", type: "image/svg+xml" },
+      { url: "/favicon-32.png", type: "image/png", sizes: "32x32" },
+      { url: "/favicon-16.png", type: "image/png", sizes: "16x16" },
     ],
-    apple: [{ url: '/apple-touch-icon.png', sizes: '180x180' }],
+    apple: [{ url: "/apple-touch-icon.png", sizes: "180x180" }],
   },
-  manifest: '/site.webmanifest',
+  manifest: "/site.webmanifest",
 };
 
 export const viewport: Viewport = {
-  themeColor: '#4F46E5',
+  themeColor: "#4F46E5",
 };
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   return (
     <html lang="sk">
       <head>
