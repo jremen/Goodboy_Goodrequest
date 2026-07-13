@@ -1,0 +1,13 @@
+.donationWrapper {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+}
+
+@media (min-width: 1024px) {
+  .donationWrapper {
+    width: 55.3%;
+    padding: 3.75em 5em;
+    align-self: stretch;
+  }
+}

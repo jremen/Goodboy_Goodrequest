@@ -47,7 +47,7 @@ export default function RootLayout({
         <link rel="manifest" href="/site.webmanifest" />
         <meta name="theme-color" content="#4F46E5" />
       </head>
-      <body className={inter.variable}>
+      <body className={`${inter.variable} ${inter.className}`}>
         <Providers>
           <main id="main-content" className="">
             {children}
