@@ -41,11 +41,10 @@ export default function RootLayout({
         <meta name="theme-color" content="#4F46E5" />
       </head>
       <body>
-        <a href="#main-content" className="skip-link">
-          Preskočiť na hlavný obsah
-        </a>
         <Providers>
-          <main id="main-content">{children}</main>
+          <main id="main-content" className="">
+            {children}
+          </main>
         </Providers>
       </body>
     </html>

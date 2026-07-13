@@ -1,0 +1,9 @@
+.doggy {
+  display: none;
+}
+
+@media (min-width: 1024px) {
+  .doggy {
+    display: block;
+  }
+}
