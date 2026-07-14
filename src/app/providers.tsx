@@ -1,5 +1,6 @@
 "use client";
 
+import stepperClasses from "@/components/form/steps/stepper.module.css";
 import i18n from "@/lib/i18n/config";
 import { getQueryClient } from "@/lib/query/getQueryClient";
 import {
@@ -7,6 +8,7 @@ import {
   createTheme,
   DEFAULT_THEME,
   MantineProvider,
+  Stepper,
 } from "@mantine/core";
 import { Notifications } from "@mantine/notifications";
 import { QueryClientProvider } from "@tanstack/react-query";
@@ -46,6 +48,14 @@ const theme = createTheme({
           };
         }
         return { root: {} };
+      },
+    }),
+    Stepper: Stepper.extend({
+      classNames: {
+        step: stepperClasses.step,
+        stepIcon: stepperClasses.stepIcon,
+        stepLabel: stepperClasses.stepLabel,
+        stepCompletedIcon: stepperClasses.stepCompletedIcon,
       },
     }),
   },

@@ -6,6 +6,8 @@
   --app-min-height: 100dvh;
   --color-quintarny: #D1D5DB;
   --color-tertiary: #4B5563;
+  --color-black: #111827;
+  --color-white: #fff;
 }
 
 html {

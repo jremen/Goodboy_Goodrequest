@@ -1,0 +1,34 @@
+.stepIcon {
+  background-color: #fff;
+  border-color: var(--color-quintarny);
+  color: var(--color-quintarny);
+}
+
+.stepLabel {
+  font-size: var(--mantine-font-size-md);
+  font-weight: var(--mantine-font-weight-regular);
+  color: var(--color-quintarny);
+}
+
+.stepIcon:where([data-progress]) {
+  background-color: var(--mantine-color-brand-6);
+  border-color: var(--mantine-color-brand-6);
+  color: var(--color-white);
+}
+
+.step:has(.stepIcon[data-progress]) .stepLabel {
+  color: var(--color-black);
+}
+
+.stepIcon:where([data-completed]) {
+  background-color: #fff;
+  border-color: var(--mantine-color-brand-6);
+}
+
+.stepCompletedIcon {
+  color: var(--mantine-color-brand-6);
+}
+
+.step:has(.stepIcon[data-completed]) .stepLabel {
+  color: var(--color-black);
+}
