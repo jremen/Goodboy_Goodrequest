@@ -1,13 +1,16 @@
 "use client";
 
 import { useTranslation } from "@/lib/i18n/useTranslation";
+import { useSubmitContribution } from "@/lib/query/mutations";
 import { useDonationStore } from "@/lib/store";
 import { Button, Group, Stepper, StepperStep } from "@mantine/core";
-import { useCallback } from "react";
+import { useCallback, useRef } from "react";
 import { Footer } from "../layout/Footer/Footer";
 import style from "./DonationWizard.module.css";
-import ChooseShelter from "./steps/ChooseShelter/ChooseShelter";
-import PersonalInfo from "./steps/PersonalInfo";
+import ChooseShelter, {
+  type ChooseShelterHandle,
+} from "./steps/ChooseShelter/ChooseShelter";
+import PersonalInfo, { type PersonalInfoHandle } from "./steps/PersonalInfo";
 import ReviewForm from "./steps/ReviewForm";
 
 const stepLabels = ["shelter", "details", "review"] as const;
@@ -16,24 +19,31 @@ export function DonationWizard() {
   const { t } = useTranslation("form");
   const { t: tc } = useTranslation();
   const { step, nextStep, prevStep } = useDonationStore();
-  const amount = useDonationStore((store) => store.value);
+  const { isPending } = useSubmitContribution();
 
-  const steps = stepLabels.map((key) => ({
-    label: t(`steps.${key}`),
-  }));
+  const chooseShelterRef = useRef<ChooseShelterHandle>(null);
+  const personalInfoRef = useRef<PersonalInfoHandle>(null);
+
+  const handleNext = () => {
+    if (step === 0) {
+      chooseShelterRef.current?.submit();
+    } else if (step === 1) {
+      personalInfoRef.current?.submit();
+    }
+  };
 
   const renderStep = useCallback(() => {
     switch (step) {
       case 0:
-        return <ChooseShelter />;
+        return <ChooseShelter ref={chooseShelterRef} onNext={nextStep} />;
       case 1:
-        return <PersonalInfo />;
+        return <PersonalInfo ref={personalInfoRef} onNext={nextStep} />;
       case 2:
         return <ReviewForm />;
       default:
         return null;
     }
-  }, [step]);
+  }, [step, nextStep]);
 
   return (
     <div className={style.donationWrapper}>
@@ -44,8 +54,8 @@ export function DonationWizard() {
         onStepClick={step < 2 ? () => {} : undefined}
         allowNextStepsSelect={false}
       >
-        {steps.map((s, i) => (
-          <StepperStep key={i} label={s.label} />
+        {stepLabels.map((key, i) => (
+          <StepperStep key={i} label={t(`steps.${key}`)} />
         ))}
       </Stepper>
 
@@ -53,8 +63,8 @@ export function DonationWizard() {
         {renderStep()}
       </div>
 
-      {step < 2 && (
-        <Group justify="space-between" mt="xl">
+      {step <= 2 && (
+        <Group justify="space-between" mt="auto">
           <Button
             variant="brandGray"
             size="regular"
@@ -63,15 +73,23 @@ export function DonationWizard() {
           >
             {tc("common.back")}
           </Button>
-          <Button
-            onClick={nextStep}
-            size="regular"
-            disabled={step === 0 && (!amount || amount === "0")}
-          >
-            {tc("common.next")}
-          </Button>
+          {step < 2 ? (
+            <Button size="regular" onClick={handleNext}>
+              {tc("common.next")}
+            </Button>
+          ) : (
+            <Button
+              type="submit"
+              form="reviewform"
+              loading={isPending}
+              size="regular"
+            >
+              {tc("common.submit")}
+            </Button>
+          )}
         </Group>
       )}
+
       <Footer />
     </div>
   );

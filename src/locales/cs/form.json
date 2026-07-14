@@ -1,0 +1,60 @@
+{
+  "general": {
+    "notrequired": "(Nepovinné)"
+  },
+  "steps": {
+    "shelter": "Výběr útulku",
+    "details": "Osobní údaje",
+    "review": "Shrnutí"
+  },
+  "type": {
+    "title": "Vyberte způsob pomoci",
+    "general": "Obecný příspěvek pro nadaci",
+    "specific": "Příspěvek pro konkrétní útulek"
+  },
+  "shelter": {
+    "title": "O projektu",
+    "label": "Útulek",
+    "placeholder": "Vyberte útulek ze seznamu",
+    "required": "Vyberte útulek"
+  },
+  "amount": {
+    "title": "Výše příspěvku",
+    "preset": {
+      "5": "5 €",
+      "10": "10 €",
+      "20": "20 €",
+      "30": "30 €",
+      "50": "50 €",
+      "100": "100 €"
+    }
+  },
+  "details": {
+    "title": "Potřebujeme od vás pár informací",
+    "firstName": "Jméno",
+    "firstNamePlaceholder": "Zadejte vaše jméno",
+    "lastName": "Příjmení",
+    "lastNamePlaceholder": "Zadejte vaše příjmení",
+    "email": "E-mail",
+    "emailPlaceholder": "Zadejte váš e-mail",
+    "phone": "Telefon",
+    "addContributor": "Přidat dalšího dárce",
+    "removeContributor": "Odstranit dárce",
+    "contributorLabel": "O vás"
+  },
+  "review": {
+    "title": "Zkontrolujte zadané údaje",
+    "summary": "Shrnutí",
+    "type": "Forma pomoci",
+    "shelter": "Útulek",
+    "amount": "Výše příspěvku",
+    "contributors": "Dárci",
+    "contributor": "Dárce {{index}}",
+    "gdpr": "Souhlasím se zpracováním mých osobních údajů",
+    "generalType": "Všeobecný příspěvek",
+    "specificType": "Příspěvek pro útulek",
+    "notSelected": "Nevybráno",
+    "submitSuccess": "Příspěvek byl úspěšně odeslán!",
+    "submitError": "Při odesílání příspěvku došlo k chybě."
+  }
+}

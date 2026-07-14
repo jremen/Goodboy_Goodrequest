@@ -2,12 +2,20 @@
   display: flex;
   flex: 1;
   flex-direction: column;
+  justify-content: flex-start;
+  height: auto;
 }
 
 @media (min-width: 1024px) {
   .donationWrapper {
     width: 55.3%;
-    padding: 3.75em 5em;
-    align-self: stretch;
+    padding: 2.25em 5em;
+    padding-left: 0;
+  }
+}
+
+@media (min-width: 1380px) {
+  .donationWrapper {
+    padding-left: 5em;
   }
 }

@@ -1,3 +1,4 @@
+import { getServerT } from "@/lib/i18n/serverLocale";
 import { ColorSchemeScript } from "@mantine/core";
 import type { Metadata, Viewport } from "next";
 import { Inter } from "next/font/google";
@@ -10,38 +11,43 @@ const inter = Inter({
   display: "swap",
 });
 
-export const metadata: Metadata = {
-  title: "GoodBoy - Pomôžte psíkom v núdzi",
-  description:
-    "Podporte slovenské psie útulky prostredníctvom nadácie GoodBoy.",
-  openGraph: {
-    title: "GoodBoy - Pomôžte psíkom v núdzi",
-    description:
-      "Podporte slovenské psie útulky prostredníctvom nadácie GoodBoy.",
-    type: "website",
-  },
-  icons: {
-    icon: [
-      { url: "/favicon.svg", type: "image/svg+xml" },
-      { url: "/favicon-32.png", type: "image/png", sizes: "32x32" },
-      { url: "/favicon-16.png", type: "image/png", sizes: "16x16" },
-    ],
-    apple: [{ url: "/apple-touch-icon.png", sizes: "180x180" }],
-  },
-  manifest: "/site.webmanifest",
-};
+export async function generateMetadata(): Promise<Metadata> {
+  const t = await getServerT();
+
+  return {
+    title: t("metadata.site.title"),
+    description: t("metadata.site.description"),
+    openGraph: {
+      title: t("metadata.site.title"),
+      description: t("metadata.site.description"),
+      type: "website",
+    },
+    icons: {
+      icon: [
+        { url: "/favicon.svg", type: "image/svg+xml" },
+        { url: "/favicon-32.png", type: "image/png", sizes: "32x32" },
+        { url: "/favicon-16.png", type: "image/png", sizes: "16x16" },
+      ],
+      apple: [{ url: "/apple-touch-icon.png", sizes: "180x180" }],
+    },
+    manifest: "/site.webmanifest",
+  };
+}
 
 export const viewport: Viewport = {
   themeColor: "#4F46E5",
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
+  const { getServerLanguage } = await import("@/lib/i18n/serverLocale");
+  const lang = await getServerLanguage();
+
   return (
-    <html lang="sk">
+    <html lang={lang}>
       <head>
         <ColorSchemeScript defaultColorScheme="light" />
         <link rel="manifest" href="/site.webmanifest" />

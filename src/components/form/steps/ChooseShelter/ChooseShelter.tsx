@@ -1,20 +1,83 @@
+"use client";
+
 import { useTranslation } from "@/lib/i18n/useTranslation";
-import { Stack, Title } from "@mantine/core";
-import { memo } from "react";
+import { useDonationStore } from "@/lib/store";
+import {
+  createChooseShelterSchema,
+  type ChooseShelterFormValues,
+} from "@/schemas/donation";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { Alert, Stack, Title } from "@mantine/core";
+import { forwardRef, useImperativeHandle, useMemo } from "react";
+import { useForm } from "react-hook-form";
 import StepAmount from "./StepAmount";
 import { StepShelter } from "./StepShelter";
 import { StepType } from "./StepType";
 
-const ChooseShelter = () => {
-  const { t } = useTranslation("form");
-  return (
-    <Stack gap="3em">
-      <Title variant="h1">{t("type.title")}</Title>
-      <StepType />
-      <StepShelter />
-      <StepAmount />
-    </Stack>
-  );
-};
+export interface ChooseShelterHandle {
+  submit: () => void;
+}
 
-export default memo(ChooseShelter);
+interface ChooseShelterProps {
+  onNext: () => void;
+}
+
+const ChooseShelter = forwardRef<ChooseShelterHandle, ChooseShelterProps>(
+  ({ onNext }, ref) => {
+    const { t } = useTranslation("form");
+    const { t: tc } = useTranslation();
+    const { type, shelterId, value } = useDonationStore();
+    const amount = Number(value) || 0;
+
+    const schema = useMemo(() => createChooseShelterSchema(tc), [tc]);
+
+    const {
+      handleSubmit,
+      formState: { errors },
+    } = useForm<ChooseShelterFormValues>({
+      resolver: zodResolver(schema),
+      values: { type, shelterId, amount },
+    });
+
+    useImperativeHandle(
+      ref,
+      () => ({
+        submit: handleSubmit(() => onNext()),
+      }),
+      [handleSubmit, onNext],
+    );
+
+    return (
+      <form
+        noValidate
+        onSubmit={handleSubmit((data) => {
+          if (data.type === "specific") {
+            // shelterId is already set in store via StepShelter
+          }
+          // amount is already set in store via StepAmount
+          onNext();
+        })}
+      >
+        <Stack gap="3em">
+          <Title variant="h1">{t("type.title")}</Title>
+          <StepType />
+          <StepShelter />
+          {errors.shelterId && (
+            <Alert color="red" variant="light">
+              {errors.shelterId.message}
+            </Alert>
+          )}
+          <StepAmount />
+          {errors.amount && (
+            <Alert color="red" variant="light">
+              {errors.amount.message}
+            </Alert>
+          )}
+        </Stack>
+      </form>
+    );
+  },
+);
+
+ChooseShelter.displayName = "ChooseShelter";
+export default ChooseShelter;

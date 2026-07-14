@@ -1,18 +1,24 @@
 import { DonationWizard } from "@/components/form/DonationWizard";
 import Doggy from "@/components/layout/Doggy";
 import { getShelters } from "@/lib/api/endpoints";
+import { getServerT } from "@/lib/i18n/serverLocale";
 import { getQueryClient } from "@/lib/query/getQueryClient";
 import { queryKeys } from "@/lib/query/queryKeys";
 import { HydrationBoundary, dehydrate } from "@tanstack/react-query";
+import type { Metadata } from "next";
 
-export const metadata = {
-  title: "Prispieť - GoodBoy",
-  description: "Vyplňte formulár a podporte slovenské psie útulky.",
-  openGraph: {
-    title: "Prispieť - GoodBoy",
-    description: "Vyplňte formulár a podporte slovenské psie útulky.",
-  },
-};
+export async function generateMetadata(): Promise<Metadata> {
+  const t = await getServerT();
+
+  return {
+    title: t("metadata.home.title"),
+    description: t("metadata.home.description"),
+    openGraph: {
+      title: t("metadata.home.title"),
+      description: t("metadata.home.description"),
+    },
+  };
+}
 
 export default function HomePage() {
   const queryClient = getQueryClient();

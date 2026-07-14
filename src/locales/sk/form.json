@@ -32,12 +32,15 @@
   "details": {
     "title": "Potrebujeme od vás zopár informácií",
     "firstName": "Meno",
+    "firstNamePlaceholder": "Zadajte vaše meno",
     "lastName": "Priezvisko",
+    "lastNamePlaceholder": "Zadajte vaše priezvisko",
     "email": "E-mailová adresa",
+    "emailPlaceholder": "Zadajte váš e-mail",
     "phone": "Telefónne číslo",
     "addContributor": "Pridať ďalšieho darcu",
     "removeContributor": "Odstrániť darcu",
-    "contributorLabel": "Darca {{index}}"
+    "contributorLabel": "O vás"
   },
   "review": {
     "title": "Skontrolujte si zadané údaje",
@@ -48,6 +51,7 @@
     "contributors": "Darcovia",
     "contributor": "Darca {{index}}",
     "gdpr": "Súhlasím so spracovaním mojich osobných údajov",
+    "notSelected": "Nevybraté",
     "generalType": "Všeobecný príspevok",
     "specificType": "Príspevok pre útulok",
     "submitSuccess": "Príspevok bol úspešne odoslaný!",

@@ -11,7 +11,10 @@
   },
   "footer": {
     "rights": "© {{year}} GoodBoy. Všetky práva vyhradené.",
-    "orgName": "GoodBoy Foundation"
+    "orgName": "GoodBoy Foundation",
+    "contact": "Kontakt",
+    "about": "O projekte",
+    "logoAlt": "GoodBoy foundation logo"
   },
   "hero": {
     "title": "Pomôžte psíkom v núdzi",
@@ -31,5 +34,45 @@
     "next": "Pokračovať",
     "submit": "Odoslať formulár",
     "cancel": "Zrušiť"
+  },
+  "langSwitcher": {
+    "label": "Jazyk"
+  },
+  "phone": {
+    "countryCode": "Predvoľba krajiny",
+    "number": "Telefónne číslo",
+    "placeholder": "XXX XXX XXX"
+  },
+  "validation": {
+    "firstName": {
+      "min": "Meno musí mať aspoň {{min}} znaky",
+      "max": "Meno môže mať najviac {{max}} znakov"
+    },
+    "lastName": {
+      "min": "Priezvisko musí mať aspoň {{min}} znaky",
+      "max": "Priezvisko môže mať najviac {{max}} znakov"
+    },
+    "email": "Zadajte platnú e-mailovú adresu",
+    "type": "Vyberte typ príspevku",
+    "amount": {
+      "required": "Zadajte výšku príspevku",
+      "min": "Príspevok musí byť aspoň {{min}} €"
+    },
+    "shelter": "Vyberte útulok",
+    "contributors": {
+      "min": "Pridajte aspoň jedného darcu"
+    },
+    "gdpr": "Musíte súhlasiť so spracovaním osobných údajov",
+    "phone": "Vyplňte platné slovenské alebo české telefónne číslo"
+  },
+  "metadata": {
+    "site": {
+      "title": "GoodBoy - Pomôžte psíkom v núdzi",
+      "description": "Podporte slovenské psie útulky prostredníctvom nadácie GoodBoy."
+    },
+    "home": {
+      "title": "Prispieť - GoodBoy",
+      "description": "Vyplňte formulár a podporte slovenské psie útulky."
+    }
   }
 }

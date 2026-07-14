@@ -13,10 +13,10 @@ export interface Stats {
 }
 
 export interface ContributeContributor {
-  firstName?: string;
+  firstName: string;
   lastName: string;
   email: string;
-  phone: string;
+  phone?: string;
 }
 
 export interface ContributePayload {

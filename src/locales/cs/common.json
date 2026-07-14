@@ -1,0 +1,78 @@
+{
+  "siteTitle": "GoodBoy - Podpořte psí útulky",
+  "nav": {
+    "home": "Domů",
+    "donate": "Přispět",
+    "contact": "Kontakt"
+  },
+  "lang": {
+    "sk": "Slovenština",
+    "cs": "Čeština"
+  },
+  "footer": {
+    "rights": "© {{year}} GoodBoy. Všechna práva vyhrazena.",
+    "orgName": "GoodBoy Foundation",
+    "contact": "Kontakt",
+    "about": "O projektu",
+    "logoAlt": "GoodBoy foundation logo"
+  },
+  "hero": {
+    "title": "Pomozte pejskům v nouzi",
+    "subtitle": "Každý příspěvek pomáhá zlepšit život opuštěným psům ve slovenských útulcích.",
+    "cta": "Chci přispět"
+  },
+  "stats": {
+    "totalRaised": "Celkově vybráno",
+    "donorCount": "Počet dárců",
+    "loading": "Načítám..."
+  },
+  "common": {
+    "loading": "Načítám...",
+    "error": "Něco se pokazilo",
+    "success": "Hotovo",
+    "back": "Zpět",
+    "next": "Pokračovat",
+    "submit": "Odeslat",
+    "cancel": "Zrušit"
+  },
+  "langSwitcher": {
+    "label": "Jazyk"
+  },
+  "phone": {
+    "countryCode": "Předvolba krajiny",
+    "number": "Telefonní číslo",
+    "placeholder": "XXX XXX XXX"
+  },
+  "validation": {
+    "firstName": {
+      "min": "Jméno musí mít alespoň {{min}} znaky",
+      "max": "Jméno může mít nejvýše {{max}} znaků"
+    },
+    "lastName": {
+      "min": "Příjmení musí mít alespoň {{min}} znaky",
+      "max": "Příjmení může mít nejvýše {{max}} znaků"
+    },
+    "email": "Zadejte platnou e-mailovou adresu",
+    "type": "Vyberte typ příspěvku",
+    "amount": {
+      "required": "Zadejte výši příspěvku",
+      "min": "Příspěvek musí být alespoň {{min}} €"
+    },
+    "shelter": "Vyberte útulek",
+    "contributors": {
+      "min": "Přidejte alespoň jednoho dárce"
+    },
+    "gdpr": "Musíte souhlasit se zpracováním osobních údajů",
+    "phone": "Vyplňte platné slovenské nebo české telefonní číslo"
+  },
+  "metadata": {
+    "site": {
+      "title": "GoodBoy - Podpořte psí útulky",
+      "description": "Podpořte slovenské psí útulky prostřednictvím nadace GoodBoy."
+    },
+    "home": {
+      "title": "Přispět - GoodBoy",
+      "description": "Vyplňte formulář a podpořte slovenské psí útulky."
+    }
+  }
+}

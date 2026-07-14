@@ -7,7 +7,7 @@ interface ContributorsData {
   firstName: string;
   lastName: string;
   email: string;
-  phone: string;
+  phone?: string;
 }
 
 interface DonationState {
@@ -26,6 +26,7 @@ interface DonationState {
   addContributor: (contributor: ContributorsData) => void;
   removeContributor: (key: string) => void;
   updateContributor: (key: string, contributor: ContributorsData) => void;
+  setContributors: (contributors: ContributorsData[]) => void;
   reset: () => void;
 }
 
@@ -76,6 +77,8 @@ export const useDonationStore = create<DonationState>((set) => ({
         contributor.key === key ? contributorVal : contributor,
       ),
     })),
+
+  setContributors: (contributors) => set({ contributors }),
 
   reset: () => set(initialState),
 }));

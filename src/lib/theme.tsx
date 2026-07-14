@@ -1,5 +1,11 @@
 import stepperClasses from "@/components/form/steps/stepper.module.css";
-import { Button, createTheme, DEFAULT_THEME, Stepper } from "@mantine/core";
+import {
+  Button,
+  createTheme,
+  DEFAULT_THEME,
+  Stepper,
+  TextInput,
+} from "@mantine/core";
 import themeClasses from "./theme.module.css";
 
 export const theme = createTheme({
@@ -46,6 +52,21 @@ export const theme = createTheme({
           };
         }
         return { root: {} };
+      },
+    }),
+    TextInput: TextInput.extend({
+      vars: (_theme, props) => {
+        if (props.size === "regular") {
+          return {
+            wrapper: {
+              "--input-height": "56px",
+              "--input-fz": "16px",
+              "--input-radius": "8px",
+              "--input-padding-y": "0.5em",
+            },
+          };
+        }
+        return { wrapper: {} };
       },
     }),
     Stepper: Stepper.extend({
