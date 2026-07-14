@@ -4,6 +4,7 @@ import { useTranslation } from "@/lib/i18n/useTranslation";
 import { useSubmitContribution } from "@/lib/query/mutations";
 import { useDonationStore } from "@/lib/store";
 import { Button, Group, Stepper, StepperStep } from "@mantine/core";
+import { IconArrowLeft, IconArrowRight } from "@tabler/icons-react";
 import { useCallback, useRef } from "react";
 import { Footer } from "../layout/Footer/Footer";
 import style from "./DonationWizard.module.css";
@@ -70,11 +71,16 @@ export function DonationWizard() {
             size="regular"
             onClick={prevStep}
             disabled={step === 0}
+            leftSection={<IconArrowLeft />}
           >
             {tc("common.back")}
           </Button>
           {step < 2 ? (
-            <Button size="regular" onClick={handleNext}>
+            <Button
+              size="regular"
+              onClick={handleNext}
+              rightSection={<IconArrowRight />}
+            >
               {tc("common.next")}
             </Button>
           ) : (
