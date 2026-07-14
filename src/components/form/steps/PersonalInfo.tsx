@@ -17,6 +17,7 @@ import {
   Text,
   TextInput,
   Title,
+  Tooltip,
 } from "@mantine/core";
 import {
   IconArrowLeft,
@@ -150,16 +151,18 @@ const PersonalInfo = forwardRef<PersonalInfoHandle, PersonalInfoProps>(
                       {t("details.contributorLabel")}
                     </Text>
                     {fields.length > 1 && (
-                      <ActionIcon
-                        color="red"
-                        variant="subtle"
-                        type="button"
-                        onClick={handleRemoveContributor}
-                        aria-label={t("details.removeContributor")}
-                        ml="auto"
-                      >
-                        <IconTrash size={16} />
-                      </ActionIcon>
+                      <Tooltip label={t("details.removeContributor")}>
+                        <ActionIcon
+                          color="red"
+                          variant="subtle"
+                          type="button"
+                          onClick={handleRemoveContributor}
+                          aria-label={t("details.removeContributor")}
+                          ml="auto"
+                        >
+                          <IconTrash size={16} />
+                        </ActionIcon>
+                      </Tooltip>
                     )}
                   </Group>
 
