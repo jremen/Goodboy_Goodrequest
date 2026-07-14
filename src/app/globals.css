@@ -4,8 +4,10 @@
 
 :root {
   --app-min-height: 100dvh;
+  --brand-input-height: 3.5rem;
   --color-quintarny: #D1D5DB;
   --color-tertiary: #4B5563;
+  --color-input: #F3F4F6;
   --color-black: #111827;
   --color-white: #fff;
 }

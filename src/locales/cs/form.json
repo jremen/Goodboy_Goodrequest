@@ -38,6 +38,8 @@
     "email": "E-mail",
     "emailPlaceholder": "Zadejte váš e-mail",
     "phone": "Telefon",
+    "prev": "Předchozí dárce",
+    "next": "Další dárce",
     "addContributor": "Přidat dalšího dárce",
     "removeContributor": "Odstranit dárce",
     "contributorLabel": "O vás"

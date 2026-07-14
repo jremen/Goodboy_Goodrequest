@@ -41,22 +41,40 @@ export function PhoneInput({ value, onChange, error, label }: PhoneInputProps) {
       <Group gap={4} align="flex-start">
         <Select
           data={countryCodes}
+          // size="regular"
+          variant="filled"
+          color="dark"
           value={prefix}
           onChange={handlePrefixChange}
           aria-label={t("phone.countryCode")}
           style={{ width: 120 }}
           comboboxProps={{ withinPortal: true }}
         />
-        <TextInput
-          value={numberPart}
-          size="regular"
-          variant="filled"
-          color="dark"
-          onChange={(e) => handleNumberChange(e.currentTarget.value)}
-          placeholder={t("phone.placeholder")}
-          style={{ flex: 1 }}
-          aria-label={t("phone.number")}
-        />
+        <Group gap="0">
+          <Group
+            color="dark"
+            align="center"
+            p="md"
+            pr="0"
+            style={{
+              height: "var(--brand-input-height)",
+              background: "var(--color-input)",
+              borderRadius: "0.5rem 0",
+            }}
+          >
+            {prefix}
+          </Group>
+          <TextInput
+            value={numberPart}
+            size="regular"
+            variant="filled"
+            color="dark"
+            onChange={(e) => handleNumberChange(e.currentTarget.value)}
+            placeholder={t("phone.placeholder")}
+            style={{ flex: 1 }}
+            aria-label={t("phone.number")}
+          />
+        </Group>
       </Group>
     </Input.Wrapper>
   );

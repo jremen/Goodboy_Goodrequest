@@ -18,9 +18,22 @@ import {
   TextInput,
   Title,
 } from "@mantine/core";
-import { IconPlus, IconTrash } from "@tabler/icons-react";
-import { forwardRef, useCallback, useImperativeHandle, useMemo } from "react";
+import {
+  IconArrowLeft,
+  IconArrowRight,
+  IconPlus,
+  IconTrash,
+} from "@tabler/icons-react";
+import {
+  forwardRef,
+  useCallback,
+  useEffect,
+  useImperativeHandle,
+  useMemo,
+  useState,
+} from "react";
 import { useFieldArray, useForm } from "react-hook-form";
+import classes from "./personalInfo.module.css";
 
 export interface PersonalInfoHandle {
   submit: () => void;
@@ -70,6 +83,27 @@ const PersonalInfo = forwardRef<PersonalInfoHandle, PersonalInfoProps>(
       name: "contributors",
     });
 
+    const [activeIndex, setActiveIndex] = useState(0);
+
+    useEffect(() => {
+      if (activeIndex >= fields.length) {
+        setActiveIndex(Math.max(0, fields.length - 1));
+      }
+    }, [activeIndex, fields.length]);
+
+    const handleAddContributor = () => {
+      append(createContributor());
+      setActiveIndex(fields.length);
+    };
+
+    const handleRemoveContributor = () => {
+      const current = activeIndex;
+      remove(current);
+      if (current === fields.length - 1) {
+        setActiveIndex(Math.max(0, fields.length - 2));
+      }
+    };
+
     const onSubmit = useCallback(
       (data: FormValues) => {
         setContributors(
@@ -94,106 +128,136 @@ const PersonalInfo = forwardRef<PersonalInfoHandle, PersonalInfoProps>(
       [handleSubmit, onSubmit],
     );
 
-    const handleAddDonor = () => {
-      append(createContributor());
-    };
-
     return (
-      <>
+      <Stack gap="3em">
         <Title variant="h1">{t("details.title")}</Title>
         <form onSubmit={handleSubmit(onSubmit)} noValidate>
-          <Stack gap="lg">
-            {fields.map((field, index) => (
-              <>
-                <Group justify="space-between" mb="sm">
-                  <Text fw={500} size="sm">
-                    {t("details.contributorLabel")}
-                  </Text>
-                  {fields.length > 1 && (
-                    <ActionIcon
-                      color="red"
-                      variant="subtle"
-                      type="button"
-                      onClick={() => remove(index)}
-                      aria-label={t("details.removeContributor")}
-                    >
-                      <IconTrash size={16} />
-                    </ActionIcon>
-                  )}
-                </Group>
+          <div className={classes.viewport}>
+            <div
+              className={classes.track}
+              style={{
+                transform: `translateX(-${activeIndex * 100}%)`,
+              }}
+            >
+              {fields.map((field, index) => (
+                <div key={field.id} className={classes.slide}>
+                  <Group
+                    justify="space-between"
+                    mb="sm"
+                    className={classes.deleteBar}
+                  >
+                    <Text fw={500} size="sm">
+                      {t("details.contributorLabel")}
+                    </Text>
+                    {fields.length > 1 && (
+                      <ActionIcon
+                        color="red"
+                        variant="subtle"
+                        type="button"
+                        onClick={handleRemoveContributor}
+                        aria-label={t("details.removeContributor")}
+                        ml="auto"
+                      >
+                        <IconTrash size={16} />
+                      </ActionIcon>
+                    )}
+                  </Group>
 
-                <Stack gap="sm">
-                  <SimpleGrid cols={{ base: 1, xs: 2 }} spacing="md">
+                  <Stack gap="sm">
+                    <SimpleGrid cols={{ base: 1, xs: 2 }} spacing="md">
+                      <TextInput
+                        label={t("details.firstName")}
+                        size="regular"
+                        variant="filled"
+                        color="dark"
+                        required
+                        placeholder={t("details.firstNamePlaceholder")}
+                        {...register(`contributors.${index}.firstName`)}
+                        error={errors.contributors?.[index]?.firstName?.message}
+                        aria-invalid={!!errors.contributors?.[index]?.firstName}
+                      />
+
+                      <TextInput
+                        label={t("details.lastName")}
+                        size="regular"
+                        variant="filled"
+                        color="dark"
+                        placeholder={t("details.lastNamePlaceholder")}
+                        required
+                        {...register(`contributors.${index}.lastName`)}
+                        error={errors.contributors?.[index]?.lastName?.message}
+                        aria-invalid={!!errors.contributors?.[index]?.lastName}
+                      />
+                    </SimpleGrid>
+
                     <TextInput
-                      label={t("details.firstName")}
+                      label={t("details.email")}
                       size="regular"
                       variant="filled"
                       color="dark"
+                      placeholder={t("details.emailPlaceholder")}
                       required
-                      placeholder={t("details.firstNamePlaceholder")}
-                      {...register(`contributors.${index}.firstName`)}
-                      error={errors.contributors?.[index]?.firstName?.message}
-                      aria-invalid={!!errors.contributors?.[index]?.firstName}
+                      type="email"
+                      {...register(`contributors.${index}.email`)}
+                      error={errors.contributors?.[index]?.email?.message}
+                      aria-invalid={!!errors.contributors?.[index]?.email}
                     />
 
-                    <TextInput
-                      label={t("details.lastName")}
-                      size="regular"
-                      variant="filled"
-                      color="dark"
-                      placeholder={t("details.lastNamePlaceholder")}
-                      required
-                      {...register(`contributors.${index}.lastName`)}
-                      error={errors.contributors?.[index]?.lastName?.message}
-                      aria-invalid={!!errors.contributors?.[index]?.lastName}
+                    <PhoneInput
+                      label={t("details.phone")}
+                      value={field.phone || ""}
+                      onChange={(val) => {
+                        const syntheticEvent = {
+                          target: {
+                            value: val,
+                            name: `contributors.${index}.phone`,
+                          },
+                        } as React.ChangeEvent<HTMLInputElement>;
+                        register(`contributors.${index}.phone`).onChange(
+                          syntheticEvent,
+                        );
+                      }}
+                      error={errors.contributors?.[index]?.phone?.message}
                     />
-                  </SimpleGrid>
+                  </Stack>
+                </div>
+              ))}
+            </div>
+          </div>
 
-                  <TextInput
-                    label={t("details.email")}
-                    size="regular"
-                    variant="filled"
-                    color="dark"
-                    placeholder={t("details.emailPlaceholder")}
-                    required
-                    type="email"
-                    {...register(`contributors.${index}.email`)}
-                    error={errors.contributors?.[index]?.email?.message}
-                    aria-invalid={!!errors.contributors?.[index]?.email}
-                  />
-
-                  <PhoneInput
-                    label={t("details.phone")}
-                    value={field.phone || ""}
-                    onChange={(val) => {
-                      const syntheticEvent = {
-                        target: {
-                          value: val,
-                          name: `contributors.${index}.phone`,
-                        },
-                      } as React.ChangeEvent<HTMLInputElement>;
-                      register(`contributors.${index}.phone`).onChange(
-                        syntheticEvent,
-                      );
-                    }}
-                    error={errors.contributors?.[index]?.phone?.message}
-                  />
-                </Stack>
-              </>
-            ))}
-
+          <Group justify="space-between" wrap="nowrap" mt="xl">
+            <Button
+              variant="outline"
+              color="dark"
+              leftSection={<IconArrowLeft size={16} />}
+              onClick={() => setActiveIndex((i) => i - 1)}
+              style={{ visibility: activeIndex === 0 ? "hidden" : "visible" }}
+            >
+              {t("details.prev")}
+            </Button>
             <Button
               variant="outline"
               leftSection={<IconPlus size={16} />}
-              onClick={handleAddDonor}
+              onClick={handleAddContributor}
               type="button"
-              fullWidth
             >
               {t("details.addContributor")}
             </Button>
-          </Stack>
+            <Button
+              variant="outline"
+              color="dark"
+              rightSection={<IconArrowRight size={16} />}
+              onClick={() => setActiveIndex((i) => i + 1)}
+              style={{
+                visibility:
+                  activeIndex === fields.length - 1 ? "hidden" : "visible",
+              }}
+            >
+              {t("details.next")}
+            </Button>
+          </Group>
         </form>
-      </>
+      </Stack>
     );
   },
 );

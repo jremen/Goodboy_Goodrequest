@@ -59,10 +59,13 @@ export const theme = createTheme({
         if (props.size === "regular") {
           return {
             wrapper: {
-              "--input-height": "56px",
+              "--input-height": "var(--brand-input-height)",
               "--input-fz": "16px",
               "--input-radius": "8px",
               "--input-padding-y": "0.5em",
+            },
+            root: {
+              "--input-bg": "var(--color-input)",
             },
           };
         }
