@@ -6,7 +6,7 @@ import { Button, Group, Stepper, StepperStep } from "@mantine/core";
 import { useCallback } from "react";
 import { Footer } from "../layout/Footer/Footer";
 import style from "./DonationWizard.module.css";
-import ChooseShelter from "./steps/ChooseShelter";
+import ChooseShelter from "./steps/ChooseShelter/ChooseShelter";
 import PersonalInfo from "./steps/PersonalInfo";
 import ReviewForm from "./steps/ReviewForm";
 
@@ -55,7 +55,7 @@ export function DonationWizard() {
       {step < 2 && (
         <Group justify="space-between" mt="xl">
           <Button
-            color="lightGray"
+            variant="brandGray"
             size="regular"
             onClick={prevStep}
             disabled={step === 0}

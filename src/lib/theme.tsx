@@ -1,5 +1,6 @@
 import stepperClasses from "@/components/form/steps/stepper.module.css";
 import { Button, createTheme, DEFAULT_THEME, Stepper } from "@mantine/core";
+import themeClasses from "./theme.module.css";
 
 export const theme = createTheme({
   primaryColor: "brand",
@@ -33,6 +34,7 @@ export const theme = createTheme({
   },
   components: {
     Button: Button.extend({
+      classNames: themeClasses,
       vars: (_theme, props) => {
         if (props.size === "regular") {
           return {

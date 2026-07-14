@@ -10,3 +10,7 @@
 .footer a {
   padding: .5em 1em;
 }
+
+.footer a:last-child {
+  padding-right: 0;
+}
