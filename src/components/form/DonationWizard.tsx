@@ -16,6 +16,7 @@ export function DonationWizard() {
   const { t } = useTranslation("form");
   const { t: tc } = useTranslation();
   const { step, nextStep, prevStep } = useDonationStore();
+  const amount = useDonationStore((store) => store.value);
 
   const steps = stepLabels.map((key) => ({
     label: t(`steps.${key}`),
@@ -40,7 +41,7 @@ export function DonationWizard() {
         active={step}
         color="brand"
         size="xs"
-        onStepClick={step < 4 ? () => {} : undefined}
+        onStepClick={step < 2 ? () => {} : undefined}
         allowNextStepsSelect={false}
       >
         {steps.map((s, i) => (
@@ -62,7 +63,11 @@ export function DonationWizard() {
           >
             {tc("common.back")}
           </Button>
-          <Button onClick={nextStep} size="regular">
+          <Button
+            onClick={nextStep}
+            size="regular"
+            disabled={step === 0 && (!amount || amount === "0")}
+          >
             {tc("common.next")}
           </Button>
         </Group>
