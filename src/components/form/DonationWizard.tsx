@@ -33,7 +33,7 @@ export function DonationWizard() {
       {step < 2 && (
         <Group justify="space-between" mt="xl">
           <Button
-            variant="outline"
+            color="lightGray"
             size="regular"
             onClick={prevStep}
             disabled={step === 0}

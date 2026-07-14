@@ -1,4 +1,6 @@
 .stepIcon {
+  font-size: var(--mantine-font-size-md);
+  font-weight: var(--mantine-font-weight-regular);
   background-color: #fff;
   border-color: var(--color-quintarny);
   color: var(--color-quintarny);
