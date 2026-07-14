@@ -10,6 +10,7 @@ import {
 import { zodResolver } from "@hookform/resolvers/zod";
 import {
   ActionIcon,
+  Badge,
   Button,
   Group,
   SimpleGrid,
@@ -56,6 +57,15 @@ function createContributor(): DonorFormValues {
   };
 }
 
+function countContributorErrors(
+  contributorErrors: Record<string, unknown> | undefined,
+): number {
+  if (!contributorErrors) return 0;
+  return Object.keys(contributorErrors).filter(
+    (k) => k !== "key" && !!contributorErrors[k],
+  ).length;
+}
+
 const PersonalInfo = forwardRef<PersonalInfoHandle, PersonalInfoProps>(
   ({ onNext }, ref) => {
     const { t } = useTranslation("form");
@@ -68,6 +78,7 @@ const PersonalInfo = forwardRef<PersonalInfoHandle, PersonalInfoProps>(
       register,
       control,
       handleSubmit,
+      setValue,
       formState: { errors },
     } = useForm<FormValues>({
       resolver: zodResolver(schema),
@@ -140,91 +151,106 @@ const PersonalInfo = forwardRef<PersonalInfoHandle, PersonalInfoProps>(
                 transform: `translateX(-${activeIndex * 100}%)`,
               }}
             >
-              {fields.map((field, index) => (
-                <div key={field.id} className={classes.slide}>
-                  <Group
-                    justify="space-between"
-                    mb="sm"
-                    className={classes.deleteBar}
-                  >
-                    <Text fw={500} size="sm">
-                      {t("details.contributorLabel")}
-                    </Text>
-                    {fields.length > 1 && (
-                      <Tooltip label={t("details.removeContributor")}>
-                        <ActionIcon
-                          color="red"
-                          variant="subtle"
-                          type="button"
-                          onClick={handleRemoveContributor}
-                          aria-label={t("details.removeContributor")}
-                          ml="auto"
-                        >
-                          <IconTrash size={16} />
-                        </ActionIcon>
-                      </Tooltip>
-                    )}
-                  </Group>
+              {fields.map((field, index) => {
+                const contributorErrors = errors.contributors?.[index];
+                const errorCount = countContributorErrors(
+                  contributorErrors as Record<string, unknown> | undefined,
+                );
+                return (
+                  <div key={field.id} className={classes.slide}>
+                    <Group
+                      justify="space-between"
+                      mb="sm"
+                      className={classes.deleteBar}
+                    >
+                      <Group gap="xs" mr="auto">
+                        <Text fw={500} size="sm">
+                          {t("details.contributorLabel")}
+                        </Text>
+                        {errorCount > 0 && (
+                          <Badge size="sm" color="red" circle>
+                            {errorCount}
+                          </Badge>
+                        )}
+                      </Group>
+                      {fields.length > 1 && (
+                        <Tooltip label={t("details.removeContributor")}>
+                          <ActionIcon
+                            color="red"
+                            variant="subtle"
+                            type="button"
+                            onClick={handleRemoveContributor}
+                            aria-label={t("details.removeContributor")}
+                          >
+                            <IconTrash size={16} />
+                          </ActionIcon>
+                        </Tooltip>
+                      )}
+                    </Group>
 
-                  <Stack gap="sm">
-                    <SimpleGrid cols={{ base: 1, xs: 2 }} spacing="md">
+                    <Stack gap="sm">
+                      <SimpleGrid cols={{ base: 1, xs: 2 }} spacing="md">
+                        <TextInput
+                          label={t("details.firstName")}
+                          size="regular"
+                          variant="filled"
+                          color="dark"
+                          required
+                          placeholder={t("details.firstNamePlaceholder")}
+                          {...register(`contributors.${index}.firstName`)}
+                          error={
+                            errors.contributors?.[index]?.firstName?.message
+                          }
+                          aria-invalid={
+                            !!errors.contributors?.[index]?.firstName
+                          }
+                        />
+
+                        <TextInput
+                          label={t("details.lastName")}
+                          size="regular"
+                          variant="filled"
+                          color="dark"
+                          placeholder={t("details.lastNamePlaceholder")}
+                          required
+                          {...register(`contributors.${index}.lastName`)}
+                          error={
+                            errors.contributors?.[index]?.lastName?.message
+                          }
+                          aria-invalid={
+                            !!errors.contributors?.[index]?.lastName
+                          }
+                        />
+                      </SimpleGrid>
+
                       <TextInput
-                        label={t("details.firstName")}
+                        label={t("details.email")}
                         size="regular"
                         variant="filled"
                         color="dark"
+                        placeholder={t("details.emailPlaceholder")}
                         required
-                        placeholder={t("details.firstNamePlaceholder")}
-                        {...register(`contributors.${index}.firstName`)}
-                        error={errors.contributors?.[index]?.firstName?.message}
-                        aria-invalid={!!errors.contributors?.[index]?.firstName}
+                        type="email"
+                        {...register(`contributors.${index}.email`)}
+                        error={errors.contributors?.[index]?.email?.message}
+                        aria-invalid={!!errors.contributors?.[index]?.email}
                       />
 
-                      <TextInput
-                        label={t("details.lastName")}
-                        size="regular"
-                        variant="filled"
-                        color="dark"
-                        placeholder={t("details.lastNamePlaceholder")}
-                        required
-                        {...register(`contributors.${index}.lastName`)}
-                        error={errors.contributors?.[index]?.lastName?.message}
-                        aria-invalid={!!errors.contributors?.[index]?.lastName}
+                      <PhoneInput
+                        label={t("details.phone")}
+                        defaultValue={field.phone || ""}
+                        onChange={(val) => {
+                          setValue(`contributors.${index}.phone`, val, {
+                            shouldValidate: true,
+                            shouldDirty: true,
+                          });
+                        }}
+                        error={errors.contributors?.[index]?.phone?.message}
                       />
-                    </SimpleGrid>
-
-                    <TextInput
-                      label={t("details.email")}
-                      size="regular"
-                      variant="filled"
-                      color="dark"
-                      placeholder={t("details.emailPlaceholder")}
-                      required
-                      type="email"
-                      {...register(`contributors.${index}.email`)}
-                      error={errors.contributors?.[index]?.email?.message}
-                      aria-invalid={!!errors.contributors?.[index]?.email}
-                    />
-
-                    <PhoneInput
-                      label={t("details.phone")}
-                      value={field.phone || ""}
-                      onChange={(val) => {
-                        const syntheticEvent = {
-                          target: {
-                            value: val,
-                            name: `contributors.${index}.phone`,
-                          },
-                        } as React.ChangeEvent<HTMLInputElement>;
-                        register(`contributors.${index}.phone`).onChange(
-                          syntheticEvent,
-                        );
-                      }}
-                      error={errors.contributors?.[index]?.phone?.message}
-                    />
-                  </Stack>
-                </div>
-              ))}
+                    </Stack>
+                  </div>
+                );
+              })}
             </div>
           </div>
 

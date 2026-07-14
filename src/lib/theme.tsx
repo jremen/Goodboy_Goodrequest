@@ -60,9 +60,12 @@ export const theme = createTheme({
           return {
             wrapper: {
               "--input-height": "var(--brand-input-height)",
+              "--input-height-regular": "var(--brand-input-height)",
               "--input-fz": "16px",
               "--input-radius": "8px",
               "--input-padding-y": "0.5em",
+              "--input-padding-inline-start": "1.5em",
+              "--input-padding-inline-end": "1.5em",
             },
             root: {
               "--input-bg": "var(--color-input)",

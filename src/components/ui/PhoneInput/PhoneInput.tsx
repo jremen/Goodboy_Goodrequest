@@ -2,6 +2,7 @@
 
 import { useTranslation } from "@/lib/i18n/useTranslation";
 import { Group, Input, Select, TextInput } from "@mantine/core";
+import { useState } from "react";
 
 const countryCodes = [
   { value: "+421", label: "🇸🇰 +421" },
@@ -9,14 +10,20 @@ const countryCodes = [
 ];
 
 interface PhoneInputProps {
-  value: string;
+  defaultValue: string;
   onChange: (value: string) => void;
   error?: string;
   label?: string;
 }
 
-export function PhoneInput({ value, onChange, error, label }: PhoneInputProps) {
+export function PhoneInput({
+  defaultValue,
+  onChange,
+  error,
+  label,
+}: PhoneInputProps) {
   const { t } = useTranslation();
+  const [value, setValue] = useState(defaultValue || "");
   const prefix = value.startsWith("+420")
     ? "+420"
     : value.startsWith("+421")
@@ -32,13 +39,15 @@ export function PhoneInput({ value, onChange, error, label }: PhoneInputProps) {
   };
 
   const handleNumberChange = (newNumber: string) => {
-    const clean = newNumber.replace(/\D/g, "");
-    onChange(`${prefix}${clean}`);
+    console.log(newNumber);
+    // const clean = newNumber.replace(/\D/g, "");
+    setValue(newNumber);
+    onChange(`${prefix}${newNumber}`);
   };
 
   return (
     <Input.Wrapper label={label} error={error}>
-      <Group gap={4} align="flex-start">
+      <Group gap={4} align="flex-start" wrap="nowrap">
         <Select
           data={countryCodes}
           // size="regular"
@@ -50,7 +59,14 @@ export function PhoneInput({ value, onChange, error, label }: PhoneInputProps) {
           style={{ width: 120 }}
           comboboxProps={{ withinPortal: true }}
         />
-        <Group gap="0">
+        <Group
+          gap="0"
+          w="100%"
+          style={{
+            background: "var(--color-input)",
+            borderRadius: "0.5rem",
+          }}
+        >
           <Group
             color="dark"
             align="center"
@@ -58,8 +74,6 @@ export function PhoneInput({ value, onChange, error, label }: PhoneInputProps) {
             pr="0"
             style={{
               height: "var(--brand-input-height)",
-              background: "var(--color-input)",
-              borderRadius: "0.5rem 0",
             }}
           >
             {prefix}
@@ -69,7 +83,8 @@ export function PhoneInput({ value, onChange, error, label }: PhoneInputProps) {
             size="regular"
             variant="filled"
             color="dark"
-            onChange={(e) => handleNumberChange(e.currentTarget.value)}
+            maxLength={9}
+            onChange={(e) => handleNumberChange(e.target.value)}
             placeholder={t("phone.placeholder")}
             style={{ flex: 1 }}
             aria-label={t("phone.number")}

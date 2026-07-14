@@ -1,8 +1,4 @@
-import {
-  QueryClient,
-  defaultShouldDehydrateQuery,
-  environmentManager,
-} from "@tanstack/react-query";
+import { QueryClient, environmentManager } from "@tanstack/react-query";
 
 function makeQueryClient() {
   return new QueryClient({
@@ -10,11 +6,6 @@ function makeQueryClient() {
       queries: {
         staleTime: 30_000,
         retry: 2,
-      },
-      dehydrate: {
-        shouldDehydrateQuery: (query) =>
-          defaultShouldDehydrateQuery(query) ||
-          query.state.status === "pending",
       },
     },
   });

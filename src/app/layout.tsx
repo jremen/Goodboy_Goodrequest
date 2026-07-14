@@ -1,5 +1,7 @@
-import { getServerT } from "@/lib/i18n/serverLocale";
-import { ColorSchemeScript } from "@mantine/core";
+import { getServerLanguage, getServerT } from "@/lib/i18n/serverLocale";
+import { ColorSchemeScript, mantineHtmlProps } from "@mantine/core";
+import "@mantine/core/styles.css";
+import "@mantine/notifications/styles.css";
 import type { Metadata, Viewport } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
@@ -43,15 +45,12 @@ export default async function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
-  const { getServerLanguage } = await import("@/lib/i18n/serverLocale");
   const lang = await getServerLanguage();
 
   return (
-    <html lang={lang}>
+    <html lang={lang} {...mantineHtmlProps}>
       <head>
         <ColorSchemeScript defaultColorScheme="light" />
-        <link rel="manifest" href="/site.webmanifest" />
-        <meta name="theme-color" content="#4F46E5" />
       </head>
       <body className={`${inter.variable} ${inter.className}`}>
         <Providers>

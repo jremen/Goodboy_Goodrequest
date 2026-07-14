@@ -23,7 +23,9 @@ export function useTranslation(ns?: string | string[]) {
 
   const t = useCallback(
     (key: string, options?: Record<string, unknown>) => {
-      return i18n.t(key, { ns, lng: language, ...options }) as string;
+      const opts: Record<string, unknown> = { lng: language, ...options };
+      if (ns !== undefined) opts.ns = ns;
+      return i18n.t(key, opts) as string;
     },
     [language, ns],
   );

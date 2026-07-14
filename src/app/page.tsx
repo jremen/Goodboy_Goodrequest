@@ -20,9 +20,9 @@ export async function generateMetadata(): Promise<Metadata> {
   };
 }
 
-export default function HomePage() {
+export default async function HomePage() {
   const queryClient = getQueryClient();
-  void queryClient.prefetchQuery({
+  await queryClient.prefetchQuery({
     queryKey: queryKeys.shelters,
     queryFn: getShelters,
   });

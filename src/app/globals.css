@@ -1,7 +1,4 @@
 /* Defines reset and box-sizing: border-box */
-@import '@mantine/core/styles.css';
-@import '@mantine/notifications/styles.css';
-
 :root {
   --app-min-height: 100dvh;
   --brand-input-height: 3.5rem;
@@ -10,6 +7,8 @@
   --color-input: #F3F4F6;
   --color-black: #111827;
   --color-white: #fff;
+
+  --input-height-regular: var(--brand-input-height);
 }
 
 html {
