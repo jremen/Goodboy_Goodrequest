@@ -2,7 +2,12 @@
 
 import i18n from "@/lib/i18n/config";
 import { getQueryClient } from "@/lib/query/getQueryClient";
-import { createTheme, DEFAULT_THEME, MantineProvider } from "@mantine/core";
+import {
+  Button,
+  createTheme,
+  DEFAULT_THEME,
+  MantineProvider,
+} from "@mantine/core";
 import { Notifications } from "@mantine/notifications";
 import { QueryClientProvider } from "@tanstack/react-query";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
@@ -27,6 +32,22 @@ const theme = createTheme({
       "#2f2aa3",
       "#1f1c82",
     ],
+  },
+  components: {
+    Button: Button.extend({
+      vars: (_theme, props) => {
+        if (props.size === "regular") {
+          return {
+            root: {
+              "--button-height": "56px",
+              "--button-padding-x": "32px",
+              "--button-fz": "16px",
+            },
+          };
+        }
+        return { root: {} };
+      },
+    }),
   },
 });
 

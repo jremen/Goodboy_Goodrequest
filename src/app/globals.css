@@ -4,6 +4,8 @@
 
 :root {
   --app-min-height: 100dvh;
+  --color-quintarny: #D1D5DB;
+  --color-tertiary: #4B5563;
 }
 
 html {
@@ -16,6 +18,18 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  color: var(--color-tertiary);
+}
+
+a {
+  color: var(--color-tertiary);
+  text-decoration: none;
+}
+
+@media (hover: hover) {
+  a:hover {
+    text-decoration: underline;
+  }
 }
 
 main {

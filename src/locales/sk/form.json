@@ -1,0 +1,56 @@
+{
+  "general": {
+    "notrequired": "(Nepovinné)"
+  },
+  "steps": {
+    "shelter": "Výber útulku",
+    "details": "Osobné údaje",
+    "review": "Potvrdenie"
+  },
+  "type": {
+    "title": "Vyberte možnosť, ako chcete pomôcť",
+    "general": "Prispieť celej nadácii",
+    "specific": "Prispieť konkrétnemu útulku"
+  },
+  "shelter": {
+    "title": "O projekte",
+    "label": "Útulok",
+    "placeholder": "Vyberte útulok zo zoznamu",
+    "required": "Vyberte útulok"
+  },
+  "amount": {
+    "title": "Suma, ktorou chcem prispieť",
+    "preset": {
+      "5": "5 €",
+      "10": "10 €",
+      "20": "20 €",
+      "30": "30 €",
+      "50": "50 €",
+      "100": "100 €"
+    }
+  },
+  "details": {
+    "title": "Potrebujeme od Vás zopár informácií",
+    "firstName": "Meno",
+    "lastName": "Priezvisko",
+    "email": "E-mailová adresa",
+    "phone": "Telefónne číslo",
+    "addContributor": "Pridať ďalšieho darcu",
+    "removeContributor": "Odstrániť darcu",
+    "contributorLabel": "Darca {{index}}"
+  },
+  "review": {
+    "title": "Skontrolujte si zadané údaje",
+    "summary": "Zhrnutie",
+    "type": "Forma pomoci",
+    "shelter": "Útulok",
+    "amount": "Suma príspevku",
+    "contributors": "Darcovia",
+    "contributor": "Darca {{index}}",
+    "gdpr": "Súhlasím so spracovaním mojich osobných údajov",
+    "generalType": "Všeobecný príspevok",
+    "specificType": "Príspevok pre útulok",
+    "submitSuccess": "Príspevok bol úspešne odoslaný!",
+    "submitError": "Pri odosielaní príspevku sa vyskytla chyba."
+  }
+}

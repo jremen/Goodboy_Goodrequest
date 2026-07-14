@@ -1,0 +1,35 @@
+{
+  "siteTitle": "GoodBoy - Podporte psie útulky",
+  "nav": {
+    "home": "Domov",
+    "donate": "Prispieť",
+    "contact": "Kontakt"
+  },
+  "lang": {
+    "sk": "Slovenčina",
+    "cs": "Čeština"
+  },
+  "footer": {
+    "rights": "© {{year}} GoodBoy. Všetky práva vyhradené.",
+    "orgName": "GoodBoy Foundation"
+  },
+  "hero": {
+    "title": "Pomôžte psíkom v núdzi",
+    "subtitle": "Každý príspevok pomáha zlepšiť život opustených psov v slovenských útulkoch.",
+    "cta": "Chcem prispieť"
+  },
+  "stats": {
+    "totalRaised": "Celkovo vyzbierané",
+    "donorCount": "Počet darcov",
+    "loading": "Načítavam..."
+  },
+  "common": {
+    "loading": "Načítavam...",
+    "error": "Niečo sa pokazilo",
+    "success": "Hotovo",
+    "back": "Späť",
+    "next": "Pokračovať",
+    "submit": "Odoslať formulár",
+    "cancel": "Zrušiť"
+  }
+}
