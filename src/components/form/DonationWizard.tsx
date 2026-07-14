@@ -3,8 +3,12 @@
 import { useTranslation } from "@/lib/i18n/useTranslation";
 import { useDonationStore } from "@/lib/store";
 import { Button, Group, Stepper, StepperStep } from "@mantine/core";
+import { useCallback } from "react";
 import { Footer } from "../layout/Footer/Footer";
 import style from "./DonationWizard.module.css";
+import ChooseShelter from "./steps/ChooseShelter";
+import PersonalInfo from "./steps/PersonalInfo";
+import ReviewForm from "./steps/ReviewForm";
 
 const stepLabels = ["shelter", "details", "review"] as const;
 
@@ -16,6 +20,19 @@ export function DonationWizard() {
   const steps = stepLabels.map((key) => ({
     label: t(`steps.${key}`),
   }));
+
+  const renderStep = useCallback(() => {
+    switch (step) {
+      case 0:
+        return <ChooseShelter />;
+      case 1:
+        return <PersonalInfo />;
+      case 2:
+        return <ReviewForm />;
+      default:
+        return null;
+    }
+  }, [step]);
 
   return (
     <div className={style.donationWrapper}>
@@ -30,6 +47,11 @@ export function DonationWizard() {
           <StepperStep key={i} label={s.label} />
         ))}
       </Stepper>
+
+      <div style={{ marginTop: "var(--mantine-spacing-xl)" }}>
+        {renderStep()}
+      </div>
+
       {step < 2 && (
         <Group justify="space-between" mt="xl">
           <Button
