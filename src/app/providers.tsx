@@ -1,65 +1,13 @@
 "use client";
 
-import stepperClasses from "@/components/form/steps/stepper.module.css";
 import i18n from "@/lib/i18n/config";
 import { getQueryClient } from "@/lib/query/getQueryClient";
-import {
-  Button,
-  createTheme,
-  DEFAULT_THEME,
-  MantineProvider,
-  Stepper,
-} from "@mantine/core";
+import { theme } from "@/lib/theme";
+import { MantineProvider } from "@mantine/core";
 import { Notifications } from "@mantine/notifications";
 import { QueryClientProvider } from "@tanstack/react-query";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import { useEffect, useState } from "react";
-
-const theme = createTheme({
-  primaryColor: "brand",
-  fontFamily: `var(--font-inter), ${DEFAULT_THEME.fontFamily}`,
-  headings: {
-    fontFamily: `var(--font-inter), ${DEFAULT_THEME.fontFamily}`,
-  },
-  colors: {
-    brand: [
-      "#eef0ff",
-      "#dde1ff",
-      "#bcc4ff",
-      "#9ba6ff",
-      "#7a89ff",
-      "#596bff",
-      "#4F46E5",
-      "#3f37c4",
-      "#2f2aa3",
-      "#1f1c82",
-    ],
-  },
-  components: {
-    Button: Button.extend({
-      vars: (_theme, props) => {
-        if (props.size === "regular") {
-          return {
-            root: {
-              "--button-height": "56px",
-              "--button-padding-x": "32px",
-              "--button-fz": "16px",
-            },
-          };
-        }
-        return { root: {} };
-      },
-    }),
-    Stepper: Stepper.extend({
-      classNames: {
-        step: stepperClasses.step,
-        stepIcon: stepperClasses.stepIcon,
-        stepLabel: stepperClasses.stepLabel,
-        stepCompletedIcon: stepperClasses.stepCompletedIcon,
-      },
-    }),
-  },
-});
 
 export function Providers({ children }: { children: React.ReactNode }) {
   const queryClient = getQueryClient();
