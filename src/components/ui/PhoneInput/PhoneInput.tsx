@@ -24,25 +24,28 @@ export function PhoneInput({
 }: PhoneInputProps) {
   const { t } = useTranslation();
   const [value, setValue] = useState(defaultValue || "");
-  const prefix = value.startsWith("+420")
-    ? "+420"
-    : value.startsWith("+421")
-      ? "+421"
-      : "+421";
+  const [prefix, setPrefix] = useState(() => {
+    if (defaultValue.startsWith("+420")) {
+      return "+420";
+    }
+    return "+421";
+  });
+
   const numberPart =
     value.startsWith("+420") || value.startsWith("+421")
       ? value.slice(4)
       : value;
 
   const handlePrefixChange = (newPrefix: string | null) => {
-    onChange(`${newPrefix ?? "+421"}${numberPart}`);
+    const safePrefix = newPrefix ?? "+421";
+    setPrefix(safePrefix);
+    onChange(`${safePrefix}${numberPart}`);
   };
 
   const handleNumberChange = (newNumber: string) => {
-    console.log(newNumber);
-    // const clean = newNumber.replace(/\D/g, "");
+    const clean = newNumber.replace(/\D/g, "");
     setValue(newNumber);
-    onChange(`${prefix}${newNumber}`);
+    onChange(`${prefix}${clean}`);
   };
 
   return (
