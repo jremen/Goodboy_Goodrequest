@@ -1,11 +1,9 @@
 import { getServerLanguage, getServerT } from "@/lib/i18n/serverLocale";
 import { ColorSchemeScript, mantineHtmlProps } from "@mantine/core";
-import "@mantine/core/styles.css";
-import "@mantine/notifications/styles.css";
 import type { Metadata, Viewport } from "next";
 import { Inter } from "next/font/google";
-import "./globals.css";
 import { Providers } from "./providers";
+import "./styles";
 
 const inter = Inter({
   subsets: ["latin", "latin-ext"],

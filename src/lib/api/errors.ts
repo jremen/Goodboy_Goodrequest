@@ -4,6 +4,6 @@ export class ApiError extends Error {
     body?: string,
   ) {
     super(`API responded with ${status}: ${body}`);
-    this.name = 'ApiError';
+    this.name = "ApiError";
   }
 }

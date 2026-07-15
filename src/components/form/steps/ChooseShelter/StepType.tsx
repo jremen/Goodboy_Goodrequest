@@ -19,13 +19,13 @@ export function StepType() {
   ];
 
   return (
-    <Card withBorder shadow="none" radius="12px" padding="xs">
+    <Card withBorder shadow="none" radius="12px" padding="0.25em">
       <Group gap="0" justify="stretch" aria-label={t("type.title")}>
         {options.map((opt) => (
           <Button
             key={opt.value}
             radius="md"
-            size="regular"
+            size="regular-small"
             style={{ width: "50%" }}
             variant={type === opt.value ? "filled" : "brandWhite"}
             color={type === opt.value ? "brand" : "var(--color-white)"}

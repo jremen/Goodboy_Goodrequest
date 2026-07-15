@@ -1,14 +1,14 @@
 .root {
   &[data-variant="brandGray"] {
-    --button-bg: #F3F4F6;
-    --button-hover: #E5E7EB;
+    --button-bg: #f3f4f6;
+    --button-hover: #e5e7eb;
     --button-color: #374151;
     --button-hover-color: #374151;
-    --button-bd: 1px solid #F3F4F6;
+    --button-bd: 1px solid #f3f4f6;
   }
   &[data-variant="brandWhite"] {
     --button-bg: transparent;
-    --button-hover: #E5E7EB;
+    --button-hover: #e5e7eb;
     --button-color: var(--color-black);
     --button-bd: 1px solid transparent;
   }

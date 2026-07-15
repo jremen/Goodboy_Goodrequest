@@ -18,10 +18,11 @@ export const theme = createTheme({
     // properties for individual headings, all of them are optional
     sizes: {
       h1: {
-        fontSize: "48px",
+        fontSize: "var(--heading-h1-size)",
         lineHeight: "1.16",
       },
-      h2: { fontSize: "36px", lineHeight: "1.16" },
+      h2: { fontSize: "var(--heading-h2-size)", lineHeight: "1.16" },
+      h3: { fontSize: "var(--heading-h3-size)", lineHeight: "1.16" },
     },
   },
   colors: {
@@ -48,6 +49,15 @@ export const theme = createTheme({
               "--button-height": "56px",
               "--button-padding-x": "32px",
               "--button-fz": "16px",
+            },
+          };
+        }
+        if (props.size === "regular-small") {
+          return {
+            root: {
+              "--button-height": "52px",
+              "--button-padding-x": "8px",
+              "--button-fz": "14px",
             },
           };
         }

@@ -2,13 +2,25 @@
 :root {
   --app-min-height: 100dvh;
   --brand-input-height: 3.5rem;
-  --color-quintarny: #D1D5DB;
-  --color-tertiary: #4B5563;
-  --color-input: #F3F4F6;
+  --color-quintarny: #d1d5db;
+  --color-tertiary: #4b5563;
+  --color-input: #f3f4f6;
   --color-black: #111827;
   --color-white: #fff;
 
   --input-height-regular: var(--brand-input-height);
+
+  --heading-h1-size: 32px;
+  --heading-h2-size: 28px;
+  --heading-h3-size: 24px;
+}
+
+@media (min-width: 768px) {
+  :root {
+    --heading-h1-size: 48px;
+    --heading-h2-size: 36px;
+    --heading-h3-size: 28px;
+  }
 }
 
 html {
@@ -42,20 +54,23 @@ main {
   padding: 0 1.5em;
 }
 
-@media (min-width: 1024px) {
-  main {
-      display: flex;
-      align-items: stretch;
-  }
-}
-
-
 .flex {
   display: flex;
 }
 
+.w-full {
+  width: 100%;
+}
+
 .rounded-xl {
   border-radius: 20px;
+}
+
+@media (min-width: 1024px) {
+  main {
+    display: flex;
+    align-items: stretch;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
