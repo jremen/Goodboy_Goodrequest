@@ -16,18 +16,12 @@
     "about": "O projektu",
     "logoAlt": "GoodBoy foundation logo"
   },
-  "hero": {
-    "title": "Pomozte pejskům v nouzi",
-    "subtitle": "Každý příspěvek pomáhá zlepšit život opuštěným psům ve slovenských útulcích.",
-    "cta": "Chci přispět"
-  },
   "stats": {
     "totalRaised": "Celkově vybráno",
-    "donorCount": "Počet dárců",
-    "loading": "Načítám..."
+    "donorCount": "Počet dárců"
   },
   "common": {
-    "loading": "Načítám...",
+    "loading": "Načítám…",
     "error": "Něco se pokazilo",
     "success": "Hotovo",
     "back": "Zpět",
@@ -73,6 +67,14 @@
     "home": {
       "title": "Přispět - GoodBoy",
       "description": "Vyplňte formulář a podpořte slovenské psí útulky."
+    },
+    "contact": {
+      "title": "Kontakt - GoodBoy",
+      "description": "Kontaktné informace o GoodBoy projektu."
+    },
+    "about": {
+      "title": "O projektu - GoodBoy",
+      "description": "Informace o podpoře slovenských psích útulků."
     }
   }
 }

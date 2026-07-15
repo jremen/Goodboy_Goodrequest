@@ -27,17 +27,18 @@ html {
   scroll-behavior: smooth;
 }
 
-body {
+body[class] {
   min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  color: var(--color-tertiary);
+  color: var(--color-black);
+}
+
+p {
+  margin: 0;
 }
 
 a {
-  color: var(--color-tertiary);
+  cursor: pointer;
+  color: var(--mantine-color-brand-6);
   text-decoration: none;
 }
 
@@ -51,7 +52,7 @@ main {
   width: 100%;
   max-width: 1440px;
   margin: 0 auto;
-  padding: 0 1.5em;
+  padding: 1em 1.5em;
 }
 
 .flex {

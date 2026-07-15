@@ -1,0 +1,27 @@
+{
+  "contact": {
+    "title": "Kontakt",
+    "office": {
+      "label": "Kancelář",
+      "text": "Navštivte nás v našem sídle",
+      "address": "Obchodná 3D, 010 08 Žilina, Slovakia"
+    },
+    "email": {
+      "label": "E-mail",
+      "text": "Náš přátelský tým je tu pro vás",
+      "value": "hello@goodrequest.com"
+    },
+    "phone": {
+      "label": "Telefon",
+      "text": "Po–Pá od 8:00 do 17:00",
+      "value": "+421 911 750 750"
+    }
+  },
+  "about": {
+    "title": "O projektu",
+    "text1": "Nadace Good Boy se věnuje zlepšování života psů v Žilině na Slovensku. Zachraňujeme opuštěné, týrané a bezdomovecké psy, poskytujeme jim lékařskou péči, útočiště a lásku, kterou si zaslouží. Naším posláním je dát těmto věrným společníkům druhou šanci na život tím, že jim najdeme milující domov. Kromě záchrany a rehabilitace se zaměřujeme také na podporu zodpovědného vlastnictví zvířat a ochrany zvířat prostřednictvím vzdělávacích a komunitních programů.",
+    "text2": "Naše práce je možná díky podpoře vášnivých dobrovolníků, štědrých dárců a komunity, která se hluboce stará o dobro zvířat. Organizujeme také kastrační a sterilizační iniciativy, abychom řešili problém toulavých psů a zajistili dlouhodobý dopad. V nadaci Good Boy věříme, že každý pes si zaslouží bezpečný, milující domov a šťastný život. Přidejte se k nám a pomozte nám dělat změny – ať už dobrovolnictvím, darováním nebo adopcí chlupatého přítele. Společně můžeme vytvořit lepší budoucnost pro psy v Žilině.",
+    "statsAmount": "Celková vybraná hodnota",
+    "statsContributors": "Počet dárců"
+  }
+}

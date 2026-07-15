@@ -1,0 +1,45 @@
+"use client";
+
+import { useTranslation } from "@/lib/i18n/useTranslation";
+import { useStats } from "@/lib/query/queries";
+import { Group, Skeleton, Stack, Text } from "@mantine/core";
+import classes from "./StatsWidget.module.css";
+
+export function StatsWidget() {
+  const { t } = useTranslation("subpages");
+  const { data, isLoading } = useStats();
+
+  if (isLoading) {
+    return (
+      <Group gap="lg" grow>
+        <Skeleton h={100} radius="md" />
+        <Skeleton h={100} radius="md" />
+      </Group>
+    );
+  }
+
+  return (
+    <Group gap="lg" grow py="3.5em" className={classes.stats}>
+      <Stack align="center">
+        <Text size="3.75rem" c="brand" fw={600}>
+          {data?.contribution != null
+            ? `${data.contribution.toLocaleString()} €`
+            : "—"}
+        </Text>
+        <Text size="1.125rem" fw={500}>
+          {t("about.statsAmount")}
+        </Text>
+      </Stack>
+      <Stack align="center">
+        <Text size="3.75rem" c="brand" fw={600}>
+          {data?.contributors != null
+            ? data.contributors.toLocaleString()
+            : "—"}
+        </Text>
+        <Text size="1.25rem" fw={500}>
+          {t("about.statsContributors")}
+        </Text>
+      </Stack>
+    </Group>
+  );
+}

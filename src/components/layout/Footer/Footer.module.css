@@ -7,10 +7,11 @@
   border-top: 1px solid var(--color-quintarny);
 }
 
-.footer a {
+.footer nav a {
+  color: var(--color-tertiary);
   padding: 0.5em 1em;
 }
 
-.footer a:last-child {
+.footer nav a:last-child {
   padding-right: 0;
 }

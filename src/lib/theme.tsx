@@ -30,7 +30,7 @@ export const theme = createTheme({
       "#eef0ff",
       "#dde1ff",
       "#bcc4ff",
-      "#9ba6ff",
+      "#A5B4FC",
       "#7a89ff",
       "#596bff",
       "#4F46E5",
