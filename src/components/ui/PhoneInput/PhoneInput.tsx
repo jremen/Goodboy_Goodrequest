@@ -14,9 +14,10 @@ interface PhoneInputProps {
 
 function splitDefault(value: string) {
   const prefix = value.startsWith("+420") ? "+420" : "+421";
-  const number = value.startsWith("+420") || value.startsWith("+421")
-    ? value.slice(4)
-    : value;
+  const number =
+    value.startsWith("+420") || value.startsWith("+421")
+      ? value.slice(4)
+      : value;
   return { prefix, number };
 }
 
@@ -27,7 +28,9 @@ export function PhoneInput({
   label,
 }: PhoneInputProps) {
   const { t } = useTranslation();
-  const [{ prefix, number }, setState] = useState(() => splitDefault(defaultValue));
+  const [{ prefix, number }, setState] = useState(() =>
+    splitDefault(defaultValue),
+  );
 
   const handlePrefixChange = useCallback(
     (newPrefix: string) => {

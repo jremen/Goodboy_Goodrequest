@@ -4,11 +4,21 @@ import { useTranslation } from "@/lib/i18n/useTranslation";
 import { useShelters } from "@/lib/query/queries";
 import { useDonationStore } from "@/lib/store";
 import { Group, Select, Skeleton, Stack, Text } from "@mantine/core";
+import { useEffect, useRef } from "react";
 
 export function StepShelter() {
   const { t } = useTranslation("form");
   const { data, isLoading } = useShelters();
   const { shelterId, setShelterId, type } = useDonationStore();
+  const isMounted = useRef(false);
+
+  useEffect(() => {
+    isMounted.current = true;
+  }, []);
+
+  if (!isMounted.current || isLoading) {
+    return <Skeleton h={48} radius="sm" />;
+  }
 
   if (isLoading) {
     return <Skeleton h={48} radius="sm" />;

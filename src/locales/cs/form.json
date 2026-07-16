@@ -57,6 +57,7 @@
     "specificType": "Příspěvek pro útulek",
     "notSelected": "Nevybráno",
     "submitSuccess": "Příspěvek byl úspěšně odeslán!",
-    "submitError": "Při odesílání příspěvku došlo k chybě."
+    "submitError": "Při odesílání příspěvku došlo k chybě.",
+    "thankYou": "Příspěvek odeslán. Děkujeme!"
   }
 }

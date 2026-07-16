@@ -57,6 +57,7 @@
     "generalType": "Finančný príspevok celej nadácii",
     "specificType": "Príspevok pre útulok",
     "submitSuccess": "Príspevok bol úspešne odoslaný!",
-    "submitError": "Pri odosielaní príspevku sa vyskytla chyba."
+    "submitError": "Pri odosielaní príspevku sa vyskytla chyba.",
+    "thankYou": "Príspevok odoslaný. Ďakujeme!"
   }
 }
