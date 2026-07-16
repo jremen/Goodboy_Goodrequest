@@ -5,3 +5,9 @@
   border-top: 1px solid var(--color-quintarny);
   border-bottom: 1px solid var(--color-quintarny);
 }
+
+@media (max-width: 768px) {
+  .stats {
+    flex-direction: column;
+  }
+}

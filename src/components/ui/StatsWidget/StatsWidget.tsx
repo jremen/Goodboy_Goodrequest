@@ -37,7 +37,7 @@ const StatsWidget = () => {
             ? data.contributors.toLocaleString()
             : "—"}
         </Text>
-        <Text size="1.25rem" fw={500}>
+        <Text size="1.125rem" fw={500}>
           {t("about.statsContributors")}
         </Text>
       </Stack>

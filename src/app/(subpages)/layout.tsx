@@ -1,4 +1,4 @@
-import { Footer } from "@/components/layout/Footer/Footer";
+import Footer from "@/components/layout/Footer/Footer";
 import Backbutton from "@/components/ui/Backbutton";
 import { Container } from "@mantine/core";
 
