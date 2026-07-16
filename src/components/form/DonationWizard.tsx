@@ -25,13 +25,13 @@ const DonationWizard = () => {
   const chooseShelterRef = useRef<ChooseShelterHandle>(null);
   const personalInfoRef = useRef<PersonalInfoHandle>(null);
 
-  const handleNext = useCallback(() => {
+  const handleNext = () => {
     if (step === 0) {
       chooseShelterRef.current?.submit();
     } else if (step === 1) {
       personalInfoRef.current?.submit();
     }
-  }, [step]);
+  };
 
   const renderStep = useCallback(() => {
     switch (step) {
