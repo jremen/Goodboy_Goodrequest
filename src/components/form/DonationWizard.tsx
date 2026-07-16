@@ -5,7 +5,7 @@ import { useSubmitContribution } from "@/lib/query/mutations";
 import { useDonationStore } from "@/lib/store";
 import { Button, Group, Stepper, StepperStep } from "@mantine/core";
 import { IconArrowLeft, IconArrowRight } from "@tabler/icons-react";
-import { memo, useCallback, useRef } from "react";
+import { memo, useCallback, useRef, useState } from "react";
 import { Footer } from "../layout/Footer/Footer";
 import style from "./DonationWizard.module.css";
 import ChooseShelter, {
@@ -21,6 +21,7 @@ const DonationWizard = () => {
   const { t: tc } = useTranslation();
   const { step, nextStep, prevStep } = useDonationStore();
   const { isPending } = useSubmitContribution();
+  const [hideButtons, setHideButtons] = useState(false);
 
   const chooseShelterRef = useRef<ChooseShelterHandle>(null);
   const personalInfoRef = useRef<PersonalInfoHandle>(null);
@@ -40,7 +41,7 @@ const DonationWizard = () => {
       case 1:
         return <PersonalInfo ref={personalInfoRef} onNext={nextStep} />;
       case 2:
-        return <ReviewForm />;
+        return <ReviewForm thankYouVisible={setHideButtons} />;
       default:
         return null;
     }
