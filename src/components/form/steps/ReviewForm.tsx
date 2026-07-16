@@ -13,7 +13,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { Alert, Checkbox, Group, Stack, Text, Title } from "@mantine/core";
 import { notifications } from "@mantine/notifications";
 import { IconCheck, IconX } from "@tabler/icons-react";
-import { memo, useMemo, useState } from "react";
+import { Fragment, memo, useMemo, useState } from "react";
 import { Controller, useForm } from "react-hook-form";
 
 const Divider = () => {
@@ -28,7 +28,11 @@ const Divider = () => {
   );
 };
 
-const ReviewForm = () => {
+const ReviewForm = ({
+  thankYouVisible,
+}: {
+  thankYouVisible: (val: boolean) => void;
+}) => {
   const { t } = useTranslation("form");
   const { t: tc } = useTranslation();
   const { type, shelterId, value, contributors, reset } = useDonationStore();
@@ -80,8 +84,10 @@ const ReviewForm = () => {
         icon: <IconCheck size={18} />,
       });
       setShowThankYou(true);
+      thankYouVisible(true);
       setTimeout(() => {
         setShowThankYou(false);
+        thankYouVisible(false);
         reset();
       }, 3000);
     } catch {
@@ -98,7 +104,7 @@ const ReviewForm = () => {
   return (
     <div style={{ position: "relative" }}>
       <Title variant="h1">{t("review.title")}</Title>
-      {showThankYou && <ThankYou title={t("review.thankYou")} />}
+      {showThankYou && <ThankYou />}
       <form onSubmit={handleSubmit(onSubmit)} id="reviewform" noValidate>
         <Stack gap="md" pt="3em">
           <Stack gap="xs">
@@ -136,7 +142,7 @@ const ReviewForm = () => {
             className="NiceScrollbar"
           >
             {contributors.map((donor, i) => (
-              <>
+              <Fragment key={donor.key ?? i}>
                 {i > 0 && <Divider />}
                 <Stack gap="xs">
                   <Text fw={600}>
@@ -159,7 +165,7 @@ const ReviewForm = () => {
                     <Text fw={600}>{donor.phone}</Text>
                   </Group>
                 </Stack>
-              </>
+              </Fragment>
             ))}
           </div>
 

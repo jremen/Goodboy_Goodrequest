@@ -95,6 +95,11 @@
   font-weight: 600;
 }
 
+.optionFocused {
+  outline: 2px solid var(--mantine-color-brand-6);
+  outline-offset: -2px;
+}
+
 .srOnly {
   position: absolute;
   width: 1px;
