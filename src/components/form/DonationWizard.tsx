@@ -5,7 +5,7 @@ import { useSubmitContribution } from "@/lib/query/mutations";
 import { useDonationStore } from "@/lib/store";
 import { Button, Group, Stepper, StepperStep } from "@mantine/core";
 import { IconArrowLeft, IconArrowRight } from "@tabler/icons-react";
-import { useCallback, useRef } from "react";
+import { memo, useCallback, useRef } from "react";
 import { Footer } from "../layout/Footer/Footer";
 import style from "./DonationWizard.module.css";
 import ChooseShelter, {
@@ -16,7 +16,7 @@ import ReviewForm from "./steps/ReviewForm";
 
 const stepLabels = ["shelter", "details", "review"] as const;
 
-export function DonationWizard() {
+const DonationWizard = () => {
   const { t } = useTranslation("form");
   const { t: tc } = useTranslation();
   const { step, nextStep, prevStep } = useDonationStore();
@@ -25,13 +25,13 @@ export function DonationWizard() {
   const chooseShelterRef = useRef<ChooseShelterHandle>(null);
   const personalInfoRef = useRef<PersonalInfoHandle>(null);
 
-  const handleNext = () => {
+  const handleNext = useCallback(() => {
     if (step === 0) {
       chooseShelterRef.current?.submit();
     } else if (step === 1) {
       personalInfoRef.current?.submit();
     }
-  };
+  }, [step]);
 
   const renderStep = useCallback(() => {
     switch (step) {
@@ -106,4 +106,6 @@ export function DonationWizard() {
       <Footer />
     </div>
   );
-}
+};
+
+export default memo(DonationWizard);

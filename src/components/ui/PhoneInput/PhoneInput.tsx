@@ -2,7 +2,7 @@
 
 import { useTranslation } from "@/lib/i18n/useTranslation";
 import { Group, Input, TextInput } from "@mantine/core";
-import { useCallback, useState } from "react";
+import { memo, useCallback, useState } from "react";
 import { CountryCodeSelect } from "./CountryCodeSelect";
 
 interface PhoneInputProps {
@@ -21,12 +21,12 @@ function splitDefault(value: string) {
   return { prefix, number };
 }
 
-export function PhoneInput({
+const PhoneInput = ({
   defaultValue,
   onChange,
   error,
   label,
-}: PhoneInputProps) {
+}: PhoneInputProps) => {
   const { t } = useTranslation();
   const [{ prefix, number }, setState] = useState(() =>
     splitDefault(defaultValue),
@@ -94,4 +94,6 @@ export function PhoneInput({
       </Group>
     </Input.Wrapper>
   );
-}
+};
+
+export default memo(PhoneInput);

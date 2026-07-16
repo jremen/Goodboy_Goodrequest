@@ -1,4 +1,4 @@
-import { DonationWizard } from "@/components/form/DonationWizard";
+import DonationWizard from "@/components/form/DonationWizard";
 import Doggy from "@/components/layout/Doggy";
 import { getShelters } from "@/lib/api/endpoints";
 import { getServerT } from "@/lib/i18n/serverLocale";

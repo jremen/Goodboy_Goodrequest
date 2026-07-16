@@ -3,9 +3,10 @@
 import { useTranslation } from "@/lib/i18n/useTranslation";
 import { useStats } from "@/lib/query/queries";
 import { Group, Skeleton, Stack, Text } from "@mantine/core";
+import { memo } from "react";
 import classes from "./StatsWidget.module.css";
 
-export function StatsWidget() {
+const StatsWidget = () => {
   const { t } = useTranslation("subpages");
   const { data, isLoading } = useStats();
 
@@ -42,4 +43,6 @@ export function StatsWidget() {
       </Stack>
     </Group>
   );
-}
+};
+
+export default memo(StatsWidget);

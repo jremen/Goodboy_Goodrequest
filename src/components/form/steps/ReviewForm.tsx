@@ -1,6 +1,6 @@
 "use client";
 
-import { ThankYou } from "@/components/ui/ThankYou/ThankYou";
+import ThankYou from "@/components/ui/ThankYou/ThankYou";
 import { useTranslation } from "@/lib/i18n/useTranslation";
 import { useSubmitContribution } from "@/lib/query/mutations";
 import { useShelters } from "@/lib/query/queries";
@@ -39,7 +39,10 @@ const ReviewForm = () => {
   const schema = useMemo(() => createDonationSchema(tc), [tc]);
 
   const amount = Number(value) || 0;
-  const shelter = sheltersData?.shelters.find((s) => s.id === shelterId);
+  const shelter = useMemo(
+    () => sheltersData?.shelters.find((s) => s.id === shelterId),
+    [sheltersData?.shelters, shelterId],
+  );
 
   const {
     handleSubmit,

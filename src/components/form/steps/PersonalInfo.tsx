@@ -1,6 +1,6 @@
 "use client";
 
-import { PhoneInput } from "@/components/ui/PhoneInput/PhoneInput";
+import PhoneInput from "@/components/ui/PhoneInput/PhoneInput";
 import { useTranslation } from "@/lib/i18n/useTranslation";
 import { useDonationStore } from "@/lib/store";
 import {
@@ -103,18 +103,18 @@ const PersonalInfo = forwardRef<PersonalInfoHandle, PersonalInfoProps>(
       }
     }, [activeIndex, fields.length]);
 
-    const handleAddContributor = () => {
+    const handleAddContributor = useCallback(() => {
       append(createContributor());
       setActiveIndex(fields.length);
-    };
+    }, [append, fields.length]);
 
-    const handleRemoveContributor = () => {
+    const handleRemoveContributor = useCallback(() => {
       const current = activeIndex;
       remove(current);
       if (current === fields.length - 1) {
         setActiveIndex(Math.max(0, fields.length - 2));
       }
-    };
+    }, [activeIndex, remove, fields.length]);
 
     const onSubmit = useCallback(
       (data: FormValues) => {

@@ -8,11 +8,11 @@ import {
 } from "@/schemas/donation";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Alert, Stack, Title } from "@mantine/core";
-import { forwardRef, useImperativeHandle, useMemo } from "react";
+import { forwardRef, memo, useImperativeHandle, useMemo } from "react";
 import { useForm } from "react-hook-form";
 import StepAmount from "./StepAmount";
-import { StepShelter } from "./StepShelter";
-import { StepType } from "./StepType";
+import StepShelter from "./StepShelter";
+import StepType from "./StepType";
 
 export interface ChooseShelterHandle {
   submit: () => void;
@@ -84,4 +84,4 @@ const ChooseShelter = forwardRef<ChooseShelterHandle, ChooseShelterProps>(
 );
 
 ChooseShelter.displayName = "ChooseShelter";
-export default ChooseShelter;
+export default memo(ChooseShelter);

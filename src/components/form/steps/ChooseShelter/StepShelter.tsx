@@ -4,9 +4,9 @@ import { useTranslation } from "@/lib/i18n/useTranslation";
 import { useShelters } from "@/lib/query/queries";
 import { useDonationStore } from "@/lib/store";
 import { Group, Select, Skeleton, Stack, Text } from "@mantine/core";
-import { useEffect, useRef } from "react";
+import { memo, useEffect, useRef } from "react";
 
-export function StepShelter() {
+const StepShelter = () => {
   const { t } = useTranslation("form");
   const { data, isLoading } = useShelters();
   const { shelterId, setShelterId, type } = useDonationStore();
@@ -58,4 +58,5 @@ export function StepShelter() {
       </div>
     </Stack>
   );
-}
+};
+export default memo(StepShelter);

@@ -4,8 +4,9 @@ import { useTranslation } from "@/lib/i18n/useTranslation";
 import type { DonationType } from "@/lib/store";
 import { useDonationStore } from "@/lib/store";
 import { Button, Card, Group } from "@mantine/core";
+import { memo } from "react";
 
-export function StepType() {
+const StepType = () => {
   const { t } = useTranslation("form");
   const { type, setType } = useDonationStore();
 
@@ -42,4 +43,6 @@ export function StepType() {
       </Group>
     </Card>
   );
-}
+};
+
+export default memo(StepType);
