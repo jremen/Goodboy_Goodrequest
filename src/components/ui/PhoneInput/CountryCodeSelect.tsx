@@ -21,6 +21,7 @@ export type CountryCodeOption = {
 type CountryCodeSelectProps = {
   name: string;
   value: string;
+  langSelect?: boolean;
   onChange: (value: string) => void;
   ariaLabel: string;
 };
@@ -30,9 +31,15 @@ const countryCodes = [
   { value: "+420", icon: <FlagCZ />, label: "Česko" },
 ];
 
+const languages = [
+  { value: "sk", icon: <FlagSK />, label: "Slovensky" },
+  { value: "cs", icon: <FlagCZ />, label: "Česky" },
+];
+
 export function CountryCodeSelect({
   name,
   value,
+  langSelect,
   onChange,
   ariaLabel,
 }: CountryCodeSelectProps) {
@@ -98,7 +105,7 @@ export function CountryCodeSelect({
       <button
         ref={triggerRef}
         type="button"
-        className={styles.trigger}
+        className={`${styles.trigger} ${langSelect ? styles.languageSelector : ""}`}
         onClick={() => setOpen((o) => !o)}
         aria-haspopup="listbox"
         aria-expanded={open}
@@ -125,7 +132,7 @@ export function CountryCodeSelect({
               left: triggerRect.left,
             }}
           >
-            {countryCodes.map((option) => {
+            {(langSelect ? languages : countryCodes).map((option) => {
               const isChecked = option.value === value;
               return (
                 <li key={option.value} role="presentation">
@@ -143,7 +150,9 @@ export function CountryCodeSelect({
                       aria-label={option.label}
                     />
                     <span className={styles.flag}>{option.icon}</span>
-                    <span className={styles.value}>{option.value}</span>
+                    {!langSelect && (
+                      <span className={styles.value}>{option.value}</span>
+                    )}
                     <span>{option.label}</span>
                   </label>
                 </li>

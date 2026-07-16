@@ -26,7 +26,7 @@ export function StatsWidget() {
             ? `${data.contribution.toLocaleString()} €`
             : "—"}
         </Text>
-        <Text size="1.125rem" fw={500}>
+        <Text size="1.125rem" fw={500} style={{ textAlign: "center" }}>
           {t("about.statsAmount")}
         </Text>
       </Stack>

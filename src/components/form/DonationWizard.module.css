@@ -6,16 +6,20 @@
   height: auto;
 }
 
+.donationSteps {
+  margin-bottom: 3em;
+}
+
 @media (min-width: 1024px) {
   .donationWrapper {
     width: 55.3%;
-    padding: 2.25em 5em;
+    padding: 2.25em;
     padding-left: 0;
   }
 }
 
 @media (min-width: 1380px) {
   .donationWrapper {
-    padding-left: 5em;
+    padding: 2.25em 5em;
   }
 }

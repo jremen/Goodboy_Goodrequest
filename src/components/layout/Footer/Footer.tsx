@@ -3,6 +3,7 @@
 import { useTranslation } from "@/lib/i18n/useTranslation";
 import Image from "next/image";
 import Link from "next/link";
+import { LangSwitcher } from "../LangSwitcher/LangSwitcher";
 import classes from "./Footer.module.css";
 
 export function Footer() {
@@ -23,6 +24,7 @@ export function Footer() {
       <nav>
         <Link href="/contact">{t("footer.contact")}</Link>
         <Link href="/about">{t("footer.about")}</Link>
+        <LangSwitcher />
       </nav>
     </footer>
   );

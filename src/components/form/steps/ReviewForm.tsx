@@ -141,19 +141,19 @@ const ReviewForm = () => {
                   </Text>
                   <Group justify="space-between">
                     <Text c="var(--color-gray)">{t("details.firstName")}</Text>
-                    <Text size="sm">{donor.firstName}</Text>
+                    <Text fw={600}>{donor.firstName}</Text>
                   </Group>
                   <Group justify="space-between">
                     <Text c="var(--color-gray)">{t("details.lastName")}</Text>
-                    <Text size="sm">{donor.lastName}</Text>
+                    <Text fw={600}>{donor.lastName}</Text>
                   </Group>
                   <Group justify="space-between">
                     <Text c="var(--color-gray)">{t("details.email")}</Text>
-                    <Text size="sm">{donor.email}</Text>
+                    <Text fw={600}>{donor.email}</Text>
                   </Group>
                   <Group justify="space-between">
                     <Text c="var(--color-gray)">{t("details.phone")}</Text>
-                    <Text size="sm">{donor.phone}</Text>
+                    <Text fw={600}>{donor.phone}</Text>
                   </Group>
                 </Stack>
               </>

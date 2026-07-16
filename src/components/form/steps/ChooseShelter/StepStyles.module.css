@@ -6,6 +6,17 @@
   margin: 0 auto 1.5em;
 }
 
+.amountButtons {
+  justify-content: flex-start;
+}
+
+@media (min-width: 1024px) {
+  .amountButtons {
+    justify-content: space-between;
+    gap: 1em 0;
+  }
+}
+
 .amount svg {
   position: relative;
   bottom: .25em;

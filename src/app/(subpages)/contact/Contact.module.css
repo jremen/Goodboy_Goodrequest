@@ -20,13 +20,17 @@
   opacity: 10%;
 }
 
+.contactBox {
+  text-align: center;
+}
+
 .doggyContact {
   aspect-ratio: 1/1;
   border-radius: 1.25em;
   overflow: hidden;
   max-width: 1120px;
-  height: 500px;
-  margin: 0 auto;
+  height: 320px;
+  margin: 0 auto 3em;
 }
 
 .doggyContact img {
@@ -46,9 +50,14 @@
   }
 }
 
+@media (min-width: 1024px) {
+  .doggyContact {
+    height: 300px;
+  }
+}
+
 @media (min-width: 1280px) {
   .doggyContact {
-    aspect-ratio: 1120 / 376;
     height: 376px;
   }
 }
