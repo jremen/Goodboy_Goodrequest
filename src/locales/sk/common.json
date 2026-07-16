@@ -25,6 +25,9 @@
     "submit": "Odoslať formulár",
     "cancel": "Zrušiť"
   },
+  "header": {
+    "menuToggle": "Otvoriť menu"
+  },
   "langSwitcher": {
     "label": "Jazyk"
   },

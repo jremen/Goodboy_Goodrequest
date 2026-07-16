@@ -1,3 +1,4 @@
+import Header from "@/components/layout/Header/Header";
 import { InlineScript } from "@/components/ui/InlineScript";
 import { mantineHtmlProps } from "@mantine/core";
 import type { Metadata, Viewport } from "next";
@@ -58,6 +59,7 @@ export default async function RootLayout({
       <body className={`${inter.variable} ${inter.className}`}>
         <NextIntlClientProvider>
           <Providers>
+            <Header />
             <main id="main-content" className="">
               {children}
             </main>

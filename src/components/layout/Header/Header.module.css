@@ -1,0 +1,48 @@
+.header {
+  position: fixed;
+  display: flex;
+  align-items: center;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 4em;
+  padding: 0.5em;
+  border-bottom: 1px solid var(--color-quintarny);
+  background-color: var(--color-white);
+  z-index: 9999;
+}
+
+.header__menuWrapper {
+  margin-left: auto;
+  position: relative;
+}
+
+.header__menuBtn {
+  
+  appearance: none;
+  background: none;
+  padding: 0;
+  border: none;
+}
+
+.header__menu {
+  position: absolute;
+  text-align: right;
+  right: 0;
+  width: 10em;
+  background-color: var(--color-white);
+  border: 1px solid var(--color-quintarny);
+  z-index: 999;
+}
+
+.header__menu a {
+  display: block;
+  color: var(--color-tertiary);
+  padding: 0.5em;
+}
+
+@media (min-width: 1024px) {
+  .header {
+    display: none;
+  }
+}

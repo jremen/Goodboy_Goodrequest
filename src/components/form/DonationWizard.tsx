@@ -6,7 +6,7 @@ import { Button, Group, Stepper, StepperStep } from "@mantine/core";
 import { IconArrowLeft, IconArrowRight } from "@tabler/icons-react";
 import { useTranslations } from "next-intl";
 import { memo, useCallback, useRef, useState } from "react";
-import { Footer } from "../layout/Footer/Footer";
+import Footer from "../layout/Footer/Footer";
 import style from "./DonationWizard.module.css";
 import ChooseShelter, {
   type ChooseShelterHandle,

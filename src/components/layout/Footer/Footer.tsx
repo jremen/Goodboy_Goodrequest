@@ -3,10 +3,11 @@
 import { useTranslations } from "next-intl";
 import Image from "next/image";
 import Link from "next/link";
+import { memo } from "react";
 import { LangSwitcher } from "../LangSwitcher/LangSwitcher";
 import classes from "./Footer.module.css";
 
-export function Footer() {
+const Footer = () => {
   const t = useTranslations("common");
 
   return (
@@ -28,4 +29,6 @@ export function Footer() {
       </nav>
     </footer>
   );
-}
+};
+
+export default memo(Footer);

@@ -54,7 +54,7 @@ main {
   width: 100%;
   max-width: 1440px;
   margin: 0 auto;
-  padding: 1em 1.5em;
+  padding: 5em 1.5em;
 }
 
 .flex {
@@ -73,6 +73,7 @@ main {
   main {
     display: flex;
     align-items: stretch;
+    padding: 1em 1.5em;
   }
 }
 
@@ -86,6 +87,13 @@ main {
 .subpagesContainer {
   display: flex;
   flex-direction: column;
+}
+
+@media (max-width: 768px) {
+  .subpagesContainer[class] {
+    padding-left: 0;
+    padding-right: 0;
+  }
 }
 
 

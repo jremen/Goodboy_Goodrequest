@@ -7,6 +7,7 @@ import {
   useId,
   useRef,
   useState,
+  type MutableRefObject,
   type ReactNode,
 } from "react";
 import { createPortal } from "react-dom";
@@ -25,6 +26,7 @@ type CountryCodeSelectProps = {
   langSelect?: boolean;
   onChange: (value: string) => void;
   ariaLabel: string;
+  menuRef?: React.RefObject<HTMLUListElement | null>;
 };
 
 const countryCodes: CountryCodeOption[] = [
@@ -43,13 +45,14 @@ export function CountryCodeSelect({
   langSelect,
   onChange,
   ariaLabel,
+  menuRef: externalMenuRef,
 }: CountryCodeSelectProps) {
   const [open, setOpen] = useState(false);
   const [triggerRect, setTriggerRect] = useState<DOMRect | null>(null);
   const [activeIndex, setActiveIndex] = useState(-1);
   const wrapperRef = useRef<HTMLDivElement>(null);
   const triggerRef = useRef<HTMLButtonElement>(null);
-  const menuRef = useRef<HTMLUListElement>(null);
+  const localMenuRef = useRef<HTMLUListElement>(null);
   const typeAheadRef = useRef<ReturnType<typeof setTimeout> | undefined>(
     undefined,
   );
@@ -82,7 +85,7 @@ export function CountryCodeSelect({
       const target = e.target as Node;
       if (
         !wrapperRef.current?.contains(target) &&
-        !menuRef.current?.contains(target)
+        !localMenuRef.current?.contains(target)
       ) {
         closeMenu();
       }
@@ -256,7 +259,14 @@ export function CountryCodeSelect({
         typeof document !== "undefined" &&
         createPortal(
           <ul
-            ref={menuRef}
+            ref={(node) => {
+              localMenuRef.current = node;
+              if (externalMenuRef) {
+                (
+                  externalMenuRef as MutableRefObject<HTMLUListElement | null>
+                ).current = node;
+              }
+            }}
             id={listboxId}
             className={styles.menu}
             role="listbox"
