@@ -7,6 +7,11 @@
   border-top: 1px solid var(--color-quintarny);
 }
 
+.footer nav {
+  display: flex;
+  align-items: center;
+}
+
 @media (min-height: 1024px) {
   [class*=subpagesContainer] .footer {
     margin-top: auto;
@@ -19,6 +24,6 @@
   padding: 0.5em 1em;
 }
 
-.footer nav a:last-child {
+.footer nav *:last-child {
   padding-right: 0;
 }

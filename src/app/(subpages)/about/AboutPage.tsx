@@ -14,7 +14,7 @@ const AboutPage = () => {
       <p>{t("about.text1")}</p>
       <StatsWidget />
 
-      <p>{t("about.text2")}</p>
+      <p style={{ marginBottom: "3em" }}>{t("about.text2")}</p>
     </Stack>
   );
 };

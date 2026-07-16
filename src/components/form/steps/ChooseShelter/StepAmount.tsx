@@ -36,7 +36,7 @@ const StepAmount = () => {
         {/* <span className={stepStyles.splitter}></span> */}
         <IconCurrencyEuro size="2em" />
       </Group>
-      <Group justify="space-between" gap="0">
+      <Group className={stepStyles.amountButtons}>
         {presets.map((val) => (
           <Button
             key={val}

@@ -60,7 +60,10 @@ export function DonationWizard() {
         ))}
       </Stepper>
 
-      <div style={{ marginTop: "var(--mantine-spacing-xl)" }}>
+      <div
+        style={{ marginTop: "var(--mantine-spacing-xl)" }}
+        className={style.donationSteps}
+      >
         {renderStep()}
       </div>
 

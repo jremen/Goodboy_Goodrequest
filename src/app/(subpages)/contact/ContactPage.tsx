@@ -41,10 +41,10 @@ const ContactPage = () => {
     <Stack gap="3em">
       <Title variant="h1">{t("contact.title")}</Title>
 
-      <SimpleGrid cols={{ base: 1, xs: 3 }} spacing="md">
+      <SimpleGrid cols={{ base: 1, sm: 3 }} spacing="md">
         {contactBoxes.map((box) => {
           return (
-            <Stack key={box.label} align="center">
+            <Stack key={box.label} align="center" className={styles.contactBox}>
               <div className={styles.iconBox}>{box.icon}</div>
               <Text fw={600} size="1.25rem">
                 {box.label}
