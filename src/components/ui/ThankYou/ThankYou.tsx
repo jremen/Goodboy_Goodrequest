@@ -1,10 +1,11 @@
+import { memo } from "react";
 import styles from "./ThankYou.module.css";
 
 type ThankYouProps = {
   title: string;
 };
 
-export const ThankYou = ({ title }: ThankYouProps) => (
+const ThankYou = ({ title }: ThankYouProps) => (
   <div className={styles.overlay}>
     <div className={styles.circle}>
       <svg className={styles.check} viewBox="0 0 24 24">
@@ -14,3 +15,5 @@ export const ThankYou = ({ title }: ThankYouProps) => (
     <p className={styles.title}>{title}</p>
   </div>
 );
+
+export default memo(ThankYou);

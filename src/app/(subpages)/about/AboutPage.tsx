@@ -1,6 +1,6 @@
 "use client";
 
-import { StatsWidget } from "@/components/ui/StatsWidget/StatsWidget";
+import StatsWidget from "@/components/ui/StatsWidget/StatsWidget";
 import { useTranslation } from "@/lib/i18n/useTranslation";
 import { Stack, Title } from "@mantine/core";
 import { memo } from "react";
