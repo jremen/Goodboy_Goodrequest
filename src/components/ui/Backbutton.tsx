@@ -1,13 +1,13 @@
 "use client";
 
-import { useTranslation } from "@/lib/i18n/useTranslation";
 import { Group } from "@mantine/core";
 import { IconArrowLeft } from "@tabler/icons-react";
+import { useTranslations } from "next-intl";
 import Link from "next/link";
 import { memo } from "react";
 
 const Backbutton = () => {
-  const { t } = useTranslation("common");
+  const t = useTranslations("common");
 
   return (
     <Link href="/">

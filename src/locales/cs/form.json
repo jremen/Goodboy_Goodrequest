@@ -51,7 +51,7 @@
     "shelter": "Útulek",
     "amount": "Výše příspěvku",
     "contributors": "Dárci",
-    "contributor": "Dárce {{index}}",
+    "contributor": "Dárce {index}",
     "gdpr": "Souhlasím se zpracováním mých osobních údajů",
     "generalType": "Finančný příspěvek celé nadaci",
     "specificType": "Příspěvek pro útulek",

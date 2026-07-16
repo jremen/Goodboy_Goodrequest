@@ -1,16 +1,16 @@
 "use client";
 
-import { useTranslation } from "@/lib/i18n/useTranslation";
 import { useDonationStore } from "@/lib/store";
 import { Button, Group, Stack, Text } from "@mantine/core";
 import { IconCurrencyEuro } from "@tabler/icons-react";
+import { useTranslations } from "next-intl";
 import { memo } from "react";
 import stepStyles from "./StepStyles.module.css";
 
 const presets = [5, 10, 20, 30, 50, 100];
 
 const StepAmount = () => {
-  const { t } = useTranslation("form");
+  const t = useTranslations("form");
   const { value, setValue } = useDonationStore();
 
   return (

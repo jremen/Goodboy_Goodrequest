@@ -1,14 +1,14 @@
 import DonationWizard from "@/components/form/DonationWizard";
 import Doggy from "@/components/layout/Doggy";
 import { getShelters } from "@/lib/api/endpoints";
-import { getServerT } from "@/lib/i18n/serverLocale";
 import { getQueryClient } from "@/lib/query/getQueryClient";
 import { queryKeys } from "@/lib/query/queryKeys";
 import { HydrationBoundary, dehydrate } from "@tanstack/react-query";
 import type { Metadata } from "next";
+import { getTranslations } from "next-intl/server";
 
 export async function generateMetadata(): Promise<Metadata> {
-  const t = await getServerT();
+  const t = await getTranslations("common");
 
   return {
     title: t("metadata.home.title"),

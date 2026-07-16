@@ -1,14 +1,14 @@
 "use client";
-import { useTranslation } from "@/lib/i18n/useTranslation";
 import { SimpleGrid, Stack, Text, Title } from "@mantine/core";
 import { IconMail, IconMapPin, IconPhone } from "@tabler/icons-react";
+import { useTranslations } from "next-intl";
 import Image from "next/image";
 import Link from "next/link";
 import { memo, useMemo } from "react";
 import styles from "./Contact.module.css";
 
 const ContactPage = () => {
-  const { t } = useTranslation("subpages");
+  const t = useTranslations("subpages");
 
   const contactBoxes = useMemo(
     () => [

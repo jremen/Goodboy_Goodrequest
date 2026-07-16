@@ -1,10 +1,10 @@
 "use client";
 
-import { useTranslation } from "@/lib/i18n/useTranslation";
 import { useSubmitContribution } from "@/lib/query/mutations";
 import { useDonationStore } from "@/lib/store";
 import { Button, Group, Stepper, StepperStep } from "@mantine/core";
 import { IconArrowLeft, IconArrowRight } from "@tabler/icons-react";
+import { useTranslations } from "next-intl";
 import { memo, useCallback, useRef, useState } from "react";
 import { Footer } from "../layout/Footer/Footer";
 import style from "./DonationWizard.module.css";
@@ -17,8 +17,8 @@ import ReviewForm from "./steps/ReviewForm";
 const stepLabels = ["shelter", "details", "review"] as const;
 
 const DonationWizard = () => {
-  const { t } = useTranslation("form");
-  const { t: tc } = useTranslation();
+  const t = useTranslations("form");
+  const tc = useTranslations("common");
   const { step, nextStep, prevStep } = useDonationStore();
   const { isPending } = useSubmitContribution();
   const [hideButtons, setHideButtons] = useState(false);

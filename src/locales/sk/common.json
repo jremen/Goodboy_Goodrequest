@@ -10,7 +10,7 @@
     "cs": "Čeština"
   },
   "footer": {
-    "rights": "© {{year}} GoodBoy. Všetky práva vyhradené.",
+    "rights": "© {year} GoodBoy. Všetky práva vyhradené.",
     "orgName": "GoodBoy Foundation",
     "contact": "Kontakt",
     "about": "O projekte",
@@ -35,18 +35,18 @@
   },
   "validation": {
     "firstName": {
-      "min": "Meno musí mať aspoň {{min}} znaky",
-      "max": "Meno môže mať najviac {{max}} znakov"
+      "min": "Meno musí mať aspoň {min} znaky",
+      "max": "Meno môže mať najviac {max} znakov"
     },
     "lastName": {
-      "min": "Priezvisko musí mať aspoň {{min}} znaky",
-      "max": "Priezvisko môže mať najviac {{max}} znakov"
+      "min": "Priezvisko musí mať aspoň {min} znaky",
+      "max": "Priezvisko môže mať najviac {max} znakov"
     },
     "email": "Zadajte platnú e-mailovú adresu",
     "type": "Vyberte typ príspevku",
     "amount": {
       "required": "Zadajte výšku príspevku",
-      "min": "Príspevok musí byť aspoň {{min}} €"
+      "min": "Príspevok musí byť aspoň {min} €"
     },
     "shelter": "Vyberte útulok",
     "contributors": {

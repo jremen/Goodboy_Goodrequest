@@ -1,22 +1,18 @@
 "use client";
 
-import { useTranslation } from "@/lib/i18n/useTranslation";
 import type { DonationType } from "@/lib/store";
 import { useDonationStore } from "@/lib/store";
 import { Button, Card, Group } from "@mantine/core";
+import { useTranslations } from "next-intl";
 import { memo } from "react";
 
 const StepType = () => {
-  const { t } = useTranslation("form");
+  const t = useTranslations("form");
   const { type, setType } = useDonationStore();
 
-  const options: { value: DonationType; label: string; desc: string }[] = [
-    {
-      value: "specific",
-      label: t("type.specific"),
-      desc: t("type.specificDesc"),
-    },
-    { value: "general", label: t("type.general"), desc: t("type.generalDesc") },
+  const options: { value: DonationType; label: string }[] = [
+    { value: "specific", label: t("type.specific") },
+    { value: "general", label: t("type.general") },
   ];
 
   return (

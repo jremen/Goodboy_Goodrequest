@@ -1,12 +1,12 @@
 "use client";
 
 import StatsWidget from "@/components/ui/StatsWidget/StatsWidget";
-import { useTranslation } from "@/lib/i18n/useTranslation";
 import { Stack, Title } from "@mantine/core";
+import { useTranslations } from "next-intl";
 import { memo } from "react";
 
 const AboutPage = () => {
-  const { t } = useTranslation("subpages");
+  const t = useTranslations("subpages");
   return (
     <Stack gap="xl">
       <Title variant="h1">{t("about.title")}</Title>

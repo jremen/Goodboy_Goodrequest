@@ -1,7 +1,6 @@
 "use client";
 
 import ThankYou from "@/components/ui/ThankYou/ThankYou";
-import { useTranslation } from "@/lib/i18n/useTranslation";
 import { useSubmitContribution } from "@/lib/query/mutations";
 import { useShelters } from "@/lib/query/queries";
 import { useDonationStore } from "@/lib/store";
@@ -13,6 +12,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { Alert, Checkbox, Group, Stack, Text, Title } from "@mantine/core";
 import { notifications } from "@mantine/notifications";
 import { IconCheck, IconX } from "@tabler/icons-react";
+import { useTranslations } from "next-intl";
 import { Fragment, memo, useMemo, useState } from "react";
 import { Controller, useForm } from "react-hook-form";
 
@@ -33,8 +33,8 @@ const ReviewForm = ({
 }: {
   thankYouVisible: (val: boolean) => void;
 }) => {
-  const { t } = useTranslation("form");
-  const { t: tc } = useTranslation();
+  const t = useTranslations("form");
+  const tc = useTranslations("common");
   const { type, shelterId, value, contributors, reset } = useDonationStore();
   const { data: sheltersData } = useShelters();
   const { mutateAsync: submit } = useSubmitContribution();

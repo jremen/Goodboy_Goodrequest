@@ -1,7 +1,10 @@
 import { z } from "zod/v4";
 import { createPhoneSchema } from "./phone";
 
-type T = (key: string, options?: Record<string, unknown>) => string;
+type T = (
+  key: string,
+  options?: Record<string, string | number | Date>,
+) => string;
 
 export const createContributorsSchema = (t: T) =>
   z.object({

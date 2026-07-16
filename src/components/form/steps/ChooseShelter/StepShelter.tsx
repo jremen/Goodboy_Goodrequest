@@ -1,13 +1,13 @@
 "use client";
 
-import { useTranslation } from "@/lib/i18n/useTranslation";
 import { useShelters } from "@/lib/query/queries";
 import { useDonationStore } from "@/lib/store";
 import { Group, Select, Skeleton, Stack, Text } from "@mantine/core";
+import { useTranslations } from "next-intl";
 import { memo, useEffect, useState } from "react";
 
 const StepShelter = () => {
-  const { t } = useTranslation("form");
+  const t = useTranslations("form");
   const { data, isLoading } = useShelters();
   const { shelterId, setShelterId, type } = useDonationStore();
   const [isMounted, setIsMounted] = useState(false);

@@ -1,27 +1,29 @@
 "use client";
 
 import { CountryCodeSelect } from "@/components/ui/PhoneInput/CountryCodeSelect";
-import { useServerLang } from "@/lib/i18n/ServerI18n";
-import { useTranslation } from "@/lib/i18n/useTranslation";
-import { useEffect, useState } from "react";
+import { setLocale } from "@/i18n/localeActions";
+import { useLocale, useTranslations } from "next-intl";
+import { useRouter } from "next/navigation";
+import { useTransition } from "react";
 
 export function LangSwitcher() {
-  const { t, i18n } = useTranslation();
-  const serverLang = useServerLang();
-  const [value, setValue] = useState(serverLang ?? i18n.language);
+  const t = useTranslations("common");
+  const locale = useLocale();
+  const router = useRouter();
+  const [, startTransition] = useTransition();
 
-  useEffect(() => {
-    if (i18n.language && i18n.language !== value) {
-      setValue(i18n.language);
-    }
-  }, [i18n.language]); // eslint-disable-line react-hooks/exhaustive-deps
+  const handleChange = async (val: string) => {
+    if (val === locale) return;
+    await setLocale(val as "sk" | "cs");
+    startTransition(() => router.refresh());
+  };
 
   return (
     <CountryCodeSelect
       name="lang-prefix"
-      value={value}
+      value={locale}
       langSelect
-      onChange={(val) => i18n.changeLanguage(val)}
+      onChange={handleChange}
       ariaLabel={t("langSwitcher.label")}
     />
   );

@@ -1,13 +1,13 @@
 "use client";
 
-import { useTranslation } from "@/lib/i18n/useTranslation";
 import { useStats } from "@/lib/query/queries";
 import { Group, Skeleton, Stack, Text } from "@mantine/core";
+import { useTranslations } from "next-intl";
 import { memo } from "react";
 import classes from "./StatsWidget.module.css";
 
 const StatsWidget = () => {
-  const { t } = useTranslation("subpages");
+  const t = useTranslations("subpages");
   const { data, isLoading } = useStats();
 
   if (isLoading) {
