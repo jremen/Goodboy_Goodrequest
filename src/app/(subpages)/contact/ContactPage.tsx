@@ -60,7 +60,13 @@ const ContactPage = () => {
         })}
       </SimpleGrid>
       <div className={styles.doggyContact}>
-        <Image src="/dog_contact.jpg" alt="Doggy" width={1120} height={376} />
+        <Image
+          src="/dog_contact.jpg"
+          alt="Doggy"
+          loading="eager"
+          width={1120}
+          height={376}
+        />
       </div>
     </Stack>
   );
