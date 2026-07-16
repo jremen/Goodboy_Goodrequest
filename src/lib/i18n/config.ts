@@ -26,8 +26,8 @@ if (!i18n.isInitialized) {
     fallbackLng: "sk",
     defaultNS: "common",
     detection: {
-      order: ["localStorage", "navigator"],
-      caches: ["localStorage"],
+      order: ["localStorage", "cookie", "navigator"],
+      caches: ["localStorage", "cookie"],
     },
     interpolation: {
       escapeValue: false,

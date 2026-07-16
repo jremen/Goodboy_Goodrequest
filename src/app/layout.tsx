@@ -1,5 +1,7 @@
+import { InlineScript } from "@/components/ui/InlineScript";
+import { ServerI18nProvider } from "@/lib/i18n/ServerI18n";
 import { getServerLanguage, getServerT } from "@/lib/i18n/serverLocale";
-import { ColorSchemeScript, mantineHtmlProps } from "@mantine/core";
+import { mantineHtmlProps } from "@mantine/core";
 import type { Metadata, Viewport } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
@@ -49,14 +51,18 @@ export default async function RootLayout({
   return (
     <html lang={lang} {...mantineHtmlProps}>
       <head>
-        <ColorSchemeScript defaultColorScheme="light" />
+        <InlineScript
+          html={`try{var _c=window.localStorage.getItem("mantine-color-scheme-value");var c=_c==="light"||_c==="dark"||_c==="auto"?_c:"light";var cc=c!=="auto"?c:window.matchMedia("(prefers-color-scheme:dark)").matches?"dark":"light";document.documentElement.setAttribute("data-mantine-color-scheme",cc)}catch(e){}`}
+        />
       </head>
       <body className={`${inter.variable} ${inter.className}`}>
-        <Providers>
-          <main id="main-content" className="">
-            {children}
-          </main>
-        </Providers>
+        <ServerI18nProvider value={lang}>
+          <Providers>
+            <main id="main-content" className="">
+              {children}
+            </main>
+          </Providers>
+        </ServerI18nProvider>
       </body>
     </html>
   );

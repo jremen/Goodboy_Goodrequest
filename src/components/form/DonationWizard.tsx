@@ -69,7 +69,11 @@ const DonationWizard = () => {
       </div>
 
       {step < stepLabels.length && (
-        <Group justify="space-between" mt="auto">
+        <Group
+          justify="space-between"
+          mt="auto"
+          style={{ visibility: hideButtons ? "hidden" : "visible" }}
+        >
           {step !== 0 && (
             <Button
               variant="brandGray"
