@@ -15,19 +15,22 @@ const ContactPage = () => {
       {
         icon: <IconMail size={24} color="var(--mantine-color-brand-6)" />,
         label: t("contact.email.label"),
-        text: t("contact.email.value"),
+        text: t("contact.email.text"),
+        value: t("contact.email.value"),
         link: `mailto:${t("contact.email.value")}`,
       },
       {
         icon: <IconMapPin size={24} color="var(--mantine-color-brand-6)" />,
         label: t("contact.office.label"),
-        text: t("contact.office.address"),
+        text: t("contact.office.text"),
+        value: t("contact.office.address"),
         link: ` https://www.google.com/maps/search/?api=1&query=${encodeURI(t("contact.office.address"))}`,
       },
       {
         icon: <IconPhone size={24} color="var(--mantine-color-brand-6)" />,
         label: t("contact.phone.label"),
-        text: t("contact.phone.value"),
+        text: t("contact.phone.text"),
+        value: t("contact.phone.value"),
         link: `tel:${t("contact.phone.value")}`,
       },
     ],
@@ -47,10 +50,10 @@ const ContactPage = () => {
                 {box.label}
               </Text>
               <Text fw={400} mb="0.5em" c="var(--color-tertiary)">
-                {t("contact.email.text")}
+                {box.text}
               </Text>
               <Text fw={500} c="brand">
-                <Link href={box.link}>{box.text}</Link>
+                <Link href={box.link}>{box.value}</Link>
               </Text>
             </Stack>
           );

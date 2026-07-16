@@ -2,8 +2,10 @@
 
 import { useTranslation } from "@/lib/i18n/useTranslation";
 import { useDonationStore } from "@/lib/store";
-import { Button, Group, Stack, Text, TextInput } from "@mantine/core";
+import { Button, Group, Stack, Text } from "@mantine/core";
+import { IconCurrencyEuro } from "@tabler/icons-react";
 import { memo } from "react";
+import stepStyles from "./StepStyles.module.css";
 
 const presets = [5, 10, 20, 30, 50, 100];
 
@@ -16,15 +18,24 @@ const StepAmount = () => {
       <Text fw={600} size="md">
         {t("amount.title")}
       </Text>
-      <TextInput
-        type="number"
-        placeholder="0"
-        value={value}
-        onChange={(e) => setValue(e.currentTarget.value)}
-        min={1}
-        required
-        aria-label={t("amount.title")}
-      />
+      <Group
+        className={stepStyles.amount}
+        gap="0"
+        align="flex-end"
+        justify="center"
+      >
+        <input
+          placeholder="0"
+          value={value}
+          onChange={(e) => setValue(e.currentTarget.value)}
+          min={1}
+          size={2}
+          required
+          aria-label={t("amount.title")}
+        />
+        {/* <span className={stepStyles.splitter}></span> */}
+        <IconCurrencyEuro size="2em" />
+      </Group>
       <Group justify="space-between" gap="0">
         {presets.map((val) => (
           <Button

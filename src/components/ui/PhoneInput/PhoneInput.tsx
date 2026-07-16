@@ -1,19 +1,23 @@
 "use client";
 
 import { useTranslation } from "@/lib/i18n/useTranslation";
-import { Group, Input, Select, TextInput } from "@mantine/core";
-import { useState } from "react";
-
-const countryCodes = [
-  { value: "+421", label: "🇸🇰 +421" },
-  { value: "+420", label: "🇨🇿 +420" },
-];
+import { Group, Input, TextInput } from "@mantine/core";
+import { useCallback, useState } from "react";
+import { CountryCodeSelect } from "./CountryCodeSelect";
 
 interface PhoneInputProps {
   defaultValue: string;
-  onChange: (value: string) => void;
+  onChange: (value: string, source: "prefix" | "number") => void;
   error?: string;
   label?: string;
+}
+
+function splitDefault(value: string) {
+  const prefix = value.startsWith("+420") ? "+420" : "+421";
+  const number = value.startsWith("+420") || value.startsWith("+421")
+    ? value.slice(4)
+    : value;
+  return { prefix, number };
 }
 
 export function PhoneInput({
@@ -23,45 +27,35 @@ export function PhoneInput({
   label,
 }: PhoneInputProps) {
   const { t } = useTranslation();
-  const [value, setValue] = useState(defaultValue || "");
-  const [prefix, setPrefix] = useState(() => {
-    if (defaultValue.startsWith("+420")) {
-      return "+420";
-    }
-    return "+421";
-  });
+  const [{ prefix, number }, setState] = useState(() => splitDefault(defaultValue));
 
-  const numberPart =
-    value.startsWith("+420") || value.startsWith("+421")
-      ? value.slice(4)
-      : value;
+  const handlePrefixChange = useCallback(
+    (newPrefix: string) => {
+      setState((s) => ({ ...s, prefix: newPrefix }));
+      onChange(`${newPrefix}${number}`, "prefix");
+    },
+    [number, onChange],
+  );
 
-  const handlePrefixChange = (newPrefix: string | null) => {
-    const safePrefix = newPrefix ?? "+421";
-    setPrefix(safePrefix);
-    onChange(`${safePrefix}${numberPart}`);
-  };
-
-  const handleNumberChange = (newNumber: string) => {
-    const clean = newNumber.replace(/\D/g, "");
-    setValue(newNumber);
-    onChange(`${prefix}${clean}`);
-  };
+  const handleNumberChange = useCallback(
+    (raw: string) => {
+      const clean = raw.replace(/\D/g, "");
+      setState((s) => ({ ...s, number: raw }));
+      onChange(`${prefix}${clean}`, "number");
+    },
+    [prefix, onChange],
+  );
 
   return (
     <Input.Wrapper label={label} error={error}>
       <Group gap={4} align="flex-start" wrap="nowrap">
-        <Select
-          data={countryCodes}
-          // size="regular"
-          variant="filled"
-          color="dark"
+        <CountryCodeSelect
+          name="phone-prefix"
           value={prefix}
           onChange={handlePrefixChange}
-          aria-label={t("phone.countryCode")}
-          style={{ width: 120 }}
-          comboboxProps={{ withinPortal: true }}
+          ariaLabel={t("phone.countryCode")}
         />
+
         <Group
           gap="0"
           w="100%"
@@ -74,7 +68,7 @@ export function PhoneInput({
             color="dark"
             align="center"
             p="md"
-            pr="0"
+            pr="0.5em"
             style={{
               height: "var(--brand-input-height)",
             }}
@@ -82,13 +76,14 @@ export function PhoneInput({
             {prefix}
           </Group>
           <TextInput
-            value={numberPart}
+            value={number}
             size="regular"
             variant="filled"
             color="dark"
             maxLength={9}
             onChange={(e) => handleNumberChange(e.target.value)}
             placeholder={t("phone.placeholder")}
+            styles={{ input: { paddingLeft: "0.5em" } }}
             style={{ flex: 1 }}
             aria-label={t("phone.number")}
           />

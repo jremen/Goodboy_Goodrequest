@@ -58,21 +58,25 @@ const ChooseShelter = forwardRef<ChooseShelterHandle, ChooseShelterProps>(
           onNext();
         })}
       >
-        <Stack gap="3em">
+        <Stack gap="2.5em">
           <Title variant="h1">{t("type.title")}</Title>
-          <StepType />
-          <StepShelter />
-          {errors.shelterId && (
-            <Alert color="red" variant="light">
-              {errors.shelterId.message}
-            </Alert>
-          )}
-          <StepAmount />
-          {errors.amount && (
-            <Alert color="red" variant="light">
-              {errors.amount.message}
-            </Alert>
-          )}
+          <Stack gap="2em">
+            <StepType />
+            <StepShelter />
+            {errors.shelterId && (
+              <Alert color="red" variant="light">
+                {errors.shelterId.message}
+              </Alert>
+            )}
+            <div>
+              <StepAmount />
+              {errors.amount && (
+                <Alert color="red" variant="light">
+                  {errors.amount.message}
+                </Alert>
+              )}
+            </div>
+          </Stack>
         </Stack>
       </form>
     );

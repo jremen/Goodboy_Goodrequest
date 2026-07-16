@@ -164,9 +164,7 @@ const PersonalInfo = forwardRef<PersonalInfoHandle, PersonalInfoProps>(
                       className={classes.deleteBar}
                     >
                       <Group gap="xs" mr="auto">
-                        <Text fw={500} size="sm">
-                          {t("details.contributorLabel")}
-                        </Text>
+                        <Text fw={600}>{t("details.contributorLabel")}</Text>
                         {errorCount > 0 && (
                           <Badge size="sm" color="red" circle>
                             {errorCount}
@@ -239,9 +237,9 @@ const PersonalInfo = forwardRef<PersonalInfoHandle, PersonalInfoProps>(
                       <PhoneInput
                         label={t("details.phone")}
                         defaultValue={field.phone || ""}
-                        onChange={(val) => {
+                        onChange={(val, source) => {
                           setValue(`contributors.${index}.phone`, val, {
-                            shouldValidate: true,
+                            shouldValidate: source === "number",
                             shouldDirty: true,
                           });
                         }}

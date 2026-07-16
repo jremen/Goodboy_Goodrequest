@@ -54,7 +54,7 @@
     "contributor": "Darca {{index}}",
     "gdpr": "Súhlasím so spracovaním mojich osobných údajov",
     "notSelected": "Nevybraté",
-    "generalType": "Všeobecný príspevok",
+    "generalType": "Finančný príspevok celej nadácii",
     "specificType": "Príspevok pre útulok",
     "submitSuccess": "Príspevok bol úspešne odoslaný!",
     "submitError": "Pri odosielaní príspevku sa vyskytla chyba."

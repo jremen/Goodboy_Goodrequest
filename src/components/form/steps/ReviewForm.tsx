@@ -15,6 +15,18 @@ import { IconCheck, IconX } from "@tabler/icons-react";
 import { memo, useMemo } from "react";
 import { Controller, useForm } from "react-hook-form";
 
+const Divider = () => {
+  return (
+    <div
+      style={{
+        borderTop: "1px solid var(--color-quintarny)",
+        paddingTop: "1em",
+        marginTop: "1em",
+      }}
+    />
+  );
+};
+
 const ReviewForm = () => {
   const { t } = useTranslation("form");
   const { t: tc } = useTranslation();
@@ -75,13 +87,12 @@ const ReviewForm = () => {
     <>
       <Title variant="h1">{t("review.title")}</Title>
       <form onSubmit={handleSubmit(onSubmit)} id="reviewform" noValidate>
-        <Stack gap="md">
+        <Stack gap="md" pt="3em">
           <Stack gap="xs">
+            <Text fw={600}>{t("review.summary")}</Text>
             <Group justify="space-between">
-              <Text size="sm" c="dimmed">
-                {t("review.type")}
-              </Text>
-              <Text size="sm" fw={500}>
+              <Text c="var(--color-gray)">{t("review.type")}</Text>
+              <Text fw={600}>
                 {type === "general"
                   ? t("review.generalType")
                   : t("review.specificType")}
@@ -90,59 +101,51 @@ const ReviewForm = () => {
 
             {type === "specific" && (
               <Group justify="space-between">
-                <Text size="sm" c="dimmed">
-                  {t("review.shelter")}
-                </Text>
-                <Text size="sm" fw={500}>
-                  {shelter?.name ?? t("review.notSelected")}
-                </Text>
+                <Text c="var(--color-gray)">{t("review.shelter")}</Text>
+                <Text fw={600}>{shelter?.name ?? t("review.notSelected")}</Text>
               </Group>
             )}
 
             <Group justify="space-between">
-              <Text size="sm" c="dimmed">
-                {t("review.amount")}
-              </Text>
-              <Text size="sm" fw={500}>
-                {amount.toLocaleString()} €
-              </Text>
+              <Text c="var(--color-gray)">{t("review.amount")}</Text>
+              <Text fw={600}>{amount.toLocaleString()} €</Text>
             </Group>
           </Stack>
 
-          <Text fw={500}>{t("review.contributors")}</Text>
-          {contributors.map((donor, i) => (
-            <>
-              <Stack gap="xs">
-                <Text size="sm" fw={500}>
-                  {t("review.contributor", { index: i + 1 })}
-                </Text>
-                <Group justify="space-between">
-                  <Text size="sm" c="dimmed">
-                    {t("details.firstName")}
+          <Divider />
+
+          <Text fw={600}>{t("review.contributors")}</Text>
+          <div
+            style={{ overflowY: "auto", maxHeight: "10em" }}
+            className="NiceScrollbar"
+          >
+            {contributors.map((donor, i) => (
+              <>
+                {i > 0 && <Divider />}
+                <Stack gap="xs">
+                  <Text fw={600}>
+                    {t("review.contributor", { index: i + 1 })}
                   </Text>
-                  <Text size="sm">{donor.firstName}</Text>
-                </Group>
-                <Group justify="space-between">
-                  <Text size="sm" c="dimmed">
-                    {t("details.lastName")}
-                  </Text>
-                  <Text size="sm">{donor.lastName}</Text>
-                </Group>
-                <Group justify="space-between">
-                  <Text size="sm" c="dimmed">
-                    {t("details.email")}
-                  </Text>
-                  <Text size="sm">{donor.email}</Text>
-                </Group>
-                <Group justify="space-between">
-                  <Text size="sm" c="dimmed">
-                    {t("details.phone")}
-                  </Text>
-                  <Text size="sm">{donor.phone}</Text>
-                </Group>
-              </Stack>
-            </>
-          ))}
+                  <Group justify="space-between">
+                    <Text c="var(--color-gray)">{t("details.firstName")}</Text>
+                    <Text size="sm">{donor.firstName}</Text>
+                  </Group>
+                  <Group justify="space-between">
+                    <Text c="var(--color-gray)">{t("details.lastName")}</Text>
+                    <Text size="sm">{donor.lastName}</Text>
+                  </Group>
+                  <Group justify="space-between">
+                    <Text c="var(--color-gray)">{t("details.email")}</Text>
+                    <Text size="sm">{donor.email}</Text>
+                  </Group>
+                  <Group justify="space-between">
+                    <Text c="var(--color-gray)">{t("details.phone")}</Text>
+                    <Text size="sm">{donor.phone}</Text>
+                  </Group>
+                </Stack>
+              </>
+            ))}
+          </div>
 
           <Controller
             name="gdprConsent"

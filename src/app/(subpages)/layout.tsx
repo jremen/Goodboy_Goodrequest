@@ -8,7 +8,7 @@ export default async function Layout({
   children: React.ReactNode;
 }) {
   return (
-    <Container size="xl" pt="3em" className="w-full subpagesContainer">
+    <Container size="xl" pt="3em" className="w-full subpagesContainer ">
       <Backbutton />
       {children}
       <Footer />

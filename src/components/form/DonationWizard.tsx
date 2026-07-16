@@ -64,22 +64,25 @@ export function DonationWizard() {
         {renderStep()}
       </div>
 
-      {step <= 2 && (
+      {step < stepLabels.length && (
         <Group justify="space-between" mt="auto">
-          <Button
-            variant="brandGray"
-            size="regular"
-            onClick={prevStep}
-            disabled={step === 0}
-            leftSection={<IconArrowLeft />}
-          >
-            {tc("common.back")}
-          </Button>
+          {step !== 0 && (
+            <Button
+              variant="brandGray"
+              size="regular"
+              onClick={prevStep}
+              disabled={step === 0}
+              leftSection={<IconArrowLeft />}
+            >
+              {tc("common.back")}
+            </Button>
+          )}
           {step < 2 ? (
             <Button
               size="regular"
               onClick={handleNext}
               rightSection={<IconArrowRight />}
+              ml="auto"
             >
               {tc("common.next")}
             </Button>
@@ -89,6 +92,7 @@ export function DonationWizard() {
               form="reviewform"
               loading={isPending}
               size="regular"
+              ml="auto"
             >
               {tc("common.submit")}
             </Button>

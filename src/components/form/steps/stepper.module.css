@@ -1,36 +1,36 @@
 .stepIcon {
-  font-size: var(--mantine-font-size-md);
-  font-weight: var(--mantine-font-weight-regular);
-  background-color: #fff;
-  border-color: var(--color-quintarny);
-  color: var(--color-quintarny);
+  font-size: var(--mantine-font-size-md) !important;
+  font-weight: var(--mantine-font-weight-regular) !important;
+  background-color: #fff !important;
+  border-color: var(--color-quintarny) !important;
+  color: var(--color-quintarny) !important;
 }
 
 .stepLabel {
-  font-size: var(--mantine-font-size-md);
-  font-weight: var(--mantine-font-weight-regular);
-  color: var(--color-quintarny);
+  font-size: var(--mantine-font-size-md) !important;
+  font-weight: var(--mantine-font-weight-regular) !important;
+  color: var(--color-quintarny) !important;
 }
 
 .stepIcon:where([data-progress]) {
-  background-color: var(--mantine-color-brand-6);
-  border-color: var(--mantine-color-brand-6);
-  color: var(--color-white);
+  background-color: var(--mantine-color-brand-6) !important;
+  border-color: var(--mantine-color-brand-6) !important;
+  color: var(--color-white) !important;
 }
 
 .step:has(.stepIcon[data-progress]) .stepLabel {
-  color: var(--color-black);
+  color: var(--color-black) !important;
 }
 
 .stepIcon:where([data-completed]) {
-  background-color: #fff;
-  border-color: var(--mantine-color-brand-6);
+  background-color: #fff !important;
+  border-color: var(--mantine-color-brand-6) !important;
 }
 
 .stepCompletedIcon {
-  color: var(--mantine-color-brand-6);
+  color: var(--mantine-color-brand-6) !important;
 }
 
 .step:has(.stepIcon[data-completed]) .stepLabel {
-  color: var(--color-black);
+  color: var(--color-black) !important;
 }

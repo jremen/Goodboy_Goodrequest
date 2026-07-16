@@ -3,6 +3,7 @@ import {
   Button,
   createTheme,
   DEFAULT_THEME,
+  Select,
   Stepper,
   TextInput,
 } from "@mantine/core";
@@ -76,6 +77,37 @@ export const theme = createTheme({
               "--input-padding-y": "0.5em",
               "--input-padding-inline-start": "1.5em",
               "--input-padding-inline-end": "1.5em",
+            },
+            root: {
+              "--input-bg": "var(--color-input)",
+            },
+          };
+        }
+        return { wrapper: {} };
+      },
+    }),
+    Select: Select.extend({
+      vars: (_theme, props) => {
+        if (props.size === "regular") {
+          return {
+            wrapper: {
+              "--input-height": "var(--brand-input-height)",
+              "--input-height-regular": "var(--brand-input-height)",
+              "--input-fz": "16px",
+              "--input-radius": "8px",
+              "--input-padding-y": "0.5em",
+              "--input-padding-inline-start": "1.5em",
+              "--input-padding-inline-end": "1.5em",
+              "--input-bg": "var(--color-input)",
+              "--input-bd": "var(--color-input)",
+            },
+            input: {
+              "--input-bg": "var(--color-input)",
+              "--input-bd": "var(--color-input)",
+            },
+            option: {
+              "--combobox-option-fz": "1em",
+              "--combobox-option-padding": ".5em 1em",
             },
             root: {
               "--input-bg": "var(--color-input)",

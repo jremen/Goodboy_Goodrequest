@@ -3,10 +3,12 @@
   --app-min-height: 100dvh;
   --brand-input-height: 3.5rem;
   --color-quintarny: #d1d5db;
+  --color-quaternary: #9CA3AF;
   --color-tertiary: #4b5563;
   --color-input: #f3f4f6;
   --color-black: #111827;
   --color-white: #fff;
+  --color-gray: #374151;
 
   --input-height-regular: var(--brand-input-height);
 
@@ -74,6 +76,41 @@ main {
   }
 }
 
+@media (min-height: 1024px) {
+  main, 
+  .subpagesContainer {
+    min-height: calc(1024px - 4.5em);
+  }
+}
+
+.subpagesContainer {
+  display: flex;
+  flex-direction: column;
+}
+
+
+.NiceScrollbar {
+  scrollbar-width: thin;
+  scrollbar-color: #9ca3af transparent;
+
+  &::-webkit-scrollbar-track {
+    background-color: transparent;
+    border-top-right-radius: inherit;
+    border-bottom-right-radius: inherit;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: #9ca3af;
+    border-radius: 0.625em;
+    height: 5em;
+  }
+
+  &::-webkit-scrollbar {
+    width: 4px;
+  }
+}
+
+
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,
@@ -81,4 +118,16 @@ main {
     animation-duration: 0.01ms !important;
     transition-duration: 0.01ms !important;
   }
+}
+
+input::-webkit-textfield-decoration-container,
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    /* display: none; <- Crashes Chrome on hover */
+    -webkit-appearance: none;
+    margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
+}
+
+input[type=number] {
+    -moz-appearance: textfield; /* Firefox */
 }

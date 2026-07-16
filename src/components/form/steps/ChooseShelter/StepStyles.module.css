@@ -1,0 +1,36 @@
+.amount {
+  color: var(--color-tertiary);
+  width: auto;
+  border-bottom: 2px solid var(--mantine-color-brand-6);
+  padding: 0 .5em .5em;
+  margin: 0 auto 1.5em;
+}
+
+.amount svg {
+  position: relative;
+  bottom: .25em;
+  stroke-color: currentColor;
+}
+
+.splitter {
+  display: block;
+  flex: 0 1 1px;
+  height: 3.5rem;
+  margin: .25em;
+  background-color: #000;
+}
+
+.amount input {
+  font-size: 3.75rem;
+  flex: 1;
+  max-width: fit-content;
+  width: 100%;
+  outline: none;
+  text-align: right;
+  border: none;
+  padding: 0 !important;
+  field-sizing: content;
+  color: var(--color-quaternary);
+  height: 3.75rem;
+  line-height: 0;
+}
