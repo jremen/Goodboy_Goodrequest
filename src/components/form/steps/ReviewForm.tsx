@@ -1,5 +1,6 @@
 "use client";
 
+import { ThankYou } from "@/components/ui/ThankYou/ThankYou";
 import { useTranslation } from "@/lib/i18n/useTranslation";
 import { useSubmitContribution } from "@/lib/query/mutations";
 import { useShelters } from "@/lib/query/queries";
@@ -12,7 +13,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { Alert, Checkbox, Group, Stack, Text, Title } from "@mantine/core";
 import { notifications } from "@mantine/notifications";
 import { IconCheck, IconX } from "@tabler/icons-react";
-import { memo, useMemo } from "react";
+import { memo, useMemo, useState } from "react";
 import { Controller, useForm } from "react-hook-form";
 
 const Divider = () => {
@@ -33,6 +34,7 @@ const ReviewForm = () => {
   const { type, shelterId, value, contributors, reset } = useDonationStore();
   const { data: sheltersData } = useShelters();
   const { mutateAsync: submit } = useSubmitContribution();
+  const [showThankYou, setShowThankYou] = useState(false);
 
   const schema = useMemo(() => createDonationSchema(tc), [tc]);
 
@@ -66,17 +68,24 @@ const ReviewForm = () => {
           phone: d.phone || undefined,
         })),
       });
+
       notifications.show({
         title: tc("common.success"),
         message: t("review.submitSuccess"),
+        position: "bottom-center",
         color: "green",
         icon: <IconCheck size={18} />,
       });
-      reset();
+      setShowThankYou(true);
+      setTimeout(() => {
+        setShowThankYou(false);
+        reset();
+      }, 3000);
     } catch {
       notifications.show({
         title: tc("common.error"),
         message: t("review.submitError"),
+        position: "bottom-center",
         color: "red",
         icon: <IconX size={18} />,
       });
@@ -84,8 +93,9 @@ const ReviewForm = () => {
   };
 
   return (
-    <>
+    <div style={{ position: "relative" }}>
       <Title variant="h1">{t("review.title")}</Title>
+      {showThankYou && <ThankYou title={t("review.thankYou")} />}
       <form onSubmit={handleSubmit(onSubmit)} id="reviewform" noValidate>
         <Stack gap="md" pt="3em">
           <Stack gap="xs">
@@ -116,7 +126,10 @@ const ReviewForm = () => {
 
           <Text fw={600}>{t("review.contributors")}</Text>
           <div
-            style={{ overflowY: "auto", maxHeight: "10em" }}
+            style={{
+              overflowY: "auto",
+              maxHeight: "12em",
+            }}
             className="NiceScrollbar"
           >
             {contributors.map((donor, i) => (
@@ -167,7 +180,7 @@ const ReviewForm = () => {
           )}
         </Stack>
       </form>
-    </>
+    </div>
   );
 };
 
