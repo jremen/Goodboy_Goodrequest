@@ -1,7 +1,6 @@
 "use client";
 
 import PhoneInput from "@/components/ui/PhoneInput/PhoneInput";
-import { useTranslation } from "@/lib/i18n/useTranslation";
 import { useDonationStore } from "@/lib/store";
 import {
   createPersonalInfoSchema,
@@ -26,6 +25,7 @@ import {
   IconPlus,
   IconTrash,
 } from "@tabler/icons-react";
+import { useTranslations } from "next-intl";
 import {
   forwardRef,
   useCallback,
@@ -68,8 +68,8 @@ function countContributorErrors(
 
 const PersonalInfo = forwardRef<PersonalInfoHandle, PersonalInfoProps>(
   ({ onNext }, ref) => {
-    const { t } = useTranslation("form");
-    const { t: tc } = useTranslation();
+    const t = useTranslations("form");
+    const tc = useTranslations("common");
     const { contributors, setContributors } = useDonationStore();
 
     const schema = useMemo(() => createPersonalInfoSchema(tc), [tc]);

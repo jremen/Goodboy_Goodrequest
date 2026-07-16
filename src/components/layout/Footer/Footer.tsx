@@ -1,13 +1,13 @@
 "use client";
 
-import { useTranslation } from "@/lib/i18n/useTranslation";
+import { useTranslations } from "next-intl";
 import Image from "next/image";
 import Link from "next/link";
 import { LangSwitcher } from "../LangSwitcher/LangSwitcher";
 import classes from "./Footer.module.css";
 
 export function Footer() {
-  const { t } = useTranslation();
+  const t = useTranslations("common");
 
   return (
     <footer className={classes.footer}>

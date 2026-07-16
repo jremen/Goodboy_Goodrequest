@@ -1,9 +1,9 @@
-import { useTranslation } from "@/lib/i18n/useTranslation";
+import { useTranslations } from "next-intl";
 import { memo } from "react";
 import styles from "./ThankYou.module.css";
 
 const ThankYou = () => {
-  const { t } = useTranslation("form");
+  const t = useTranslations("form");
 
   return (
     <div className={styles.overlay}>

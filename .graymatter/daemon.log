@@ -1,0 +1,8 @@
+graymatter daemon ready: dir=/Users/zhujo/htdocs/GoodRequest_Goodboy/.graymatter addr=unix:///Users/zhujo/htdocs/GoodRequest_Goodboy/.graymatter/graymatter.sock pid=57994 idle-exit=2m0s
+daemon: signal received, shutting down
+daemon: stopped
+graymatter daemon ready: dir=/Users/zhujo/htdocs/GoodRequest_Goodboy/.graymatter addr=unix:///Users/zhujo/htdocs/GoodRequest_Goodboy/.graymatter/graymatter.sock pid=58859 idle-exit=2m0s
+graymatter daemon ready: dir=/Users/zhujo/htdocs/Goodboy_Goodrequest/.graymatter addr=unix:///Users/zhujo/htdocs/Goodboy_Goodrequest/.graymatter/graymatter.sock pid=90503 idle-exit=2m0s
+daemon: signal received, shutting down
+daemon: stopped
+graymatter daemon ready: dir=/Users/zhujo/htdocs/Goodboy_Goodrequest/.graymatter addr=unix:///Users/zhujo/htdocs/Goodboy_Goodrequest/.graymatter/graymatter.sock pid=8531 idle-exit=2m0s

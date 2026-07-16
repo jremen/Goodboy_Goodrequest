@@ -4,7 +4,10 @@ import {
 } from "libphonenumber-js";
 import { z } from "zod/v4";
 
-type T = (key: string, options?: Record<string, unknown>) => string;
+type T = (
+  key: string,
+  options?: Record<string, string | number | Date>,
+) => string;
 
 export const createPhoneSchema = (t: T) =>
   z

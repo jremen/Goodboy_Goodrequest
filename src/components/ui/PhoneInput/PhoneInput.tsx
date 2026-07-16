@@ -1,7 +1,7 @@
 "use client";
 
-import { useTranslation } from "@/lib/i18n/useTranslation";
 import { Group, Input, TextInput } from "@mantine/core";
+import { useTranslations } from "next-intl";
 import { memo, useCallback, useState } from "react";
 import { CountryCodeSelect } from "./CountryCodeSelect";
 
@@ -27,7 +27,7 @@ const PhoneInput = ({
   error,
   label,
 }: PhoneInputProps) => {
-  const { t } = useTranslation();
+  const t = useTranslations("common");
   const [{ prefix, number }, setState] = useState(() =>
     splitDefault(defaultValue),
   );

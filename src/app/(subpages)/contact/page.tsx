@@ -1,10 +1,10 @@
-import { getServerT } from "@/lib/i18n/serverLocale";
+import { getTranslations } from "next-intl/server";
 
 import type { Metadata } from "next";
 import ContactPage from "./ContactPage";
 
 export async function generateMetadata(): Promise<Metadata> {
-  const t = await getServerT();
+  const t = await getTranslations("common");
 
   return {
     title: t("metadata.contact.title"),

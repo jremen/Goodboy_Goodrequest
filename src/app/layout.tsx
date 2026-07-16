@@ -1,8 +1,8 @@
 import { InlineScript } from "@/components/ui/InlineScript";
-import { ServerI18nProvider } from "@/lib/i18n/ServerI18n";
-import { getServerLanguage, getServerT } from "@/lib/i18n/serverLocale";
 import { mantineHtmlProps } from "@mantine/core";
 import type { Metadata, Viewport } from "next";
+import { NextIntlClientProvider } from "next-intl";
+import { getLocale, getTranslations } from "next-intl/server";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import { Providers } from "./providers";
@@ -15,7 +15,7 @@ const inter = Inter({
 });
 
 export async function generateMetadata(): Promise<Metadata> {
-  const t = await getServerT();
+  const t = await getTranslations("common");
 
   return {
     title: t("metadata.site.title"),
@@ -46,23 +46,23 @@ export default async function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
-  const lang = await getServerLanguage();
+  const locale = await getLocale();
 
   return (
-    <html lang={lang} {...mantineHtmlProps}>
+    <html lang={locale} {...mantineHtmlProps}>
       <head>
         <InlineScript
           html={`try{var _c=window.localStorage.getItem("mantine-color-scheme-value");var c=_c==="light"||_c==="dark"||_c==="auto"?_c:"light";var cc=c!=="auto"?c:window.matchMedia("(prefers-color-scheme:dark)").matches?"dark":"light";document.documentElement.setAttribute("data-mantine-color-scheme",cc)}catch(e){}`}
         />
       </head>
       <body className={`${inter.variable} ${inter.className}`}>
-        <ServerI18nProvider value={lang}>
+        <NextIntlClientProvider>
           <Providers>
             <main id="main-content" className="">
               {children}
             </main>
           </Providers>
-        </ServerI18nProvider>
+        </NextIntlClientProvider>
       </body>
     </html>
   );

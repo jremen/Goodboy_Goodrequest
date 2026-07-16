@@ -51,7 +51,7 @@
     "shelter": "Útulok",
     "amount": "Suma príspevku",
     "contributors": "Darcovia",
-    "contributor": "Darca {{index}}",
+    "contributor": "Darca {index}",
     "gdpr": "Súhlasím so spracovaním mojich osobných údajov",
     "notSelected": "Nevybraté",
     "generalType": "Finančný príspevok celej nadácii",
